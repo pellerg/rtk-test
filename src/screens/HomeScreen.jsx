@@ -8,6 +8,8 @@ const HomeScreen = () => {
 
   const {
     data: sandboxSpaces,
+    isLoading,
+    isFetching,
     isSuccess,
     isUninitialized,
   } = spaceApi.useGetSandboxSpacesQuery("", {
@@ -15,16 +17,8 @@ const HomeScreen = () => {
   });
 
   useEffect(() => {
-    console.log(sandboxSpaces);
-  }, [sandboxSpaces]);
-
-  useEffect(() => {
     setSkip(!isLoggedIn);
   }, [isLoggedIn]);
-
-  useEffect(() => {
-    console.log("isUninitialized: " + isUninitialized);
-  }, [isUninitialized]);
 
   return (
     <div className="home-screen">
@@ -36,6 +30,12 @@ const HomeScreen = () => {
               <strong>Sandbox spaces:</strong>
             </span>
           </div>
+          {isLoading && <React.Fragment>
+            {console.log("LOADING SPACES")}
+            <span>Loading spaces...</span></React.Fragment>}
+            {isFetching && <React.Fragment>
+            {console.log("FETCHING SPACES")}
+            <span>isFetching spaces...</span></React.Fragment>}
           {isSuccess &&
             sandboxSpaces?.items.map((space) => (
               <React.Fragment key={space.uuid}>
