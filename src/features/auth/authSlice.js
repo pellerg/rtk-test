@@ -12,6 +12,7 @@ const initialState = {
   userToken,
   error: null,
   success: false,
+  isLoggedIn:false
 }
 
 const authSlice = createSlice({
@@ -24,6 +25,7 @@ const authSlice = createSlice({
       state.userInfo = null
       state.userToken = null
       state.error = null
+      state.isLoggedIn = false
     },
     setCredentials: (state, { payload }) => {
       console.log("setCredentials payload:")
@@ -39,10 +41,9 @@ const authSlice = createSlice({
     },
     [userLogin.fulfilled]: (state, { payload }) => {
       state.loading = false
-      console.log("USER INFO")
-      console.log(payload)
       // state.userInfo = payload
       state.userToken = payload.access_token
+      state.isLoggedIn = true
     },
     [userLogin.rejected]: (state, { payload }) => {
       state.loading = false

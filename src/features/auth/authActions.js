@@ -21,9 +21,6 @@ export const userLogin = createAsyncThunk(
         config
       )
 
-      console.log("login")
-      console.log(data)
-
       // store user's token in local storage
       localStorage.setItem('userToken', data.access_token)
 

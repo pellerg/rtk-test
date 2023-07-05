@@ -6,8 +6,7 @@ const ProfileScreen = () => {
   const { userInfo } = useSelector((state) => state.auth)
 
   useEffect(()=>{
-    console.log("profileScreen useEffect")
-    console.log("userInfouserInfo")
+    console.log("userinfo:")
     console.log(userInfo)
   }, [userInfo])
 
@@ -19,6 +18,10 @@ const ProfileScreen = () => {
         Welcome <strong>{userInfo?.first_name}!</strong> You can view this page
         because you're logged in
       </span>
+      <div className="userInfo">
+        <span> <strong>UUID:</strong> {userInfo?.uuid}</span> 
+        <span></span>
+      </div>
     </div>
   )
 }

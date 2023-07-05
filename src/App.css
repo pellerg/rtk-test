@@ -112,4 +112,13 @@ form button {
  }
 
 
+ .userInfo{
+  margin-top: 1rem
+ }
+
+ .home-screen{
+  display: flex;
+  flex-direction: column;
+ }
+
 

@@ -7,7 +7,7 @@ import Error from '../components/Error'
 import Spinner from '../components/Spinner'
 
 const LoginScreen = () => {
-  const { loading, userInfo, error } = useSelector((state) => state.auth)
+  const { loading, userInfo, error, isLoggedIn } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
 
   const { register, handleSubmit } = useForm()
@@ -16,10 +16,11 @@ const LoginScreen = () => {
 
   // redirect authenticated user to profile screen
   useEffect(() => {
-    if (userInfo) {
+    console.log("login isLoggedIn: " + isLoggedIn)
+    if (isLoggedIn) {
       navigate('/user-profile')
     }
-  }, [navigate, userInfo])
+  }, [navigate, isLoggedIn])
 
   
 

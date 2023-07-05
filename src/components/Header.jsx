@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { useGetUserDetailsQuery } from '../app/services/auth/authService'
@@ -6,19 +6,28 @@ import { logout, setCredentials } from '../features/auth/authSlice'
 import '../styles/header.css'
 
 const Header = () => {
-  const { userInfo } = useSelector((state) => state.auth)
+  const [skip, setSkip] = useState(true)
+  const { userInfo, isLoggedIn } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
 
+  // skip is a "skip" boolean variable, the hook queries data only when skip is false
+  // waiting for login to fetch userData
+  const { data, isFetching } = useGetUserDetailsQuery("",{skip});
+ 
+
+  // Original solution for fetching userData:
   // automatically authenticate user if token is found
-  const { data, isFetching } = useGetUserDetailsQuery('userDetails', {
-    pollingInterval: 300000, // 15mins
-  })
+  // const { data, isFetching } = useGetUserDetailsQuery('userDetails', {
+  //   pollingInterval: 300000, // 15mins
+  // })
+
+  useEffect(()=>{
+    setSkip(!isLoggedIn)
+    console.log("header isLoggedIn: " + isLoggedIn)
+  }, [isLoggedIn])
 
   useEffect(() => {
     if (data) dispatch(setCredentials(data))
-
-    console.log("data found")
-    console.log(data)
   }, [data, dispatch])
 
   return (
