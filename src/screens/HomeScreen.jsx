@@ -37,7 +37,7 @@ const HomeScreen = () => {
             {console.log("FETCHING SPACES")}
             <span>isFetching spaces...</span></React.Fragment>}
           {isSuccess &&
-            sandboxSpaces?.items.map((space) => (
+            sandboxSpaces?.map((space) => (
               <React.Fragment key={space.uuid}>
                 <span>{space.name}</span>
                 <br />

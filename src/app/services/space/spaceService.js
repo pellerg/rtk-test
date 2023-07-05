@@ -21,9 +21,9 @@ export const spaceApi = createApi({
       query: () => ({
         url: `/spaces/search?sandbox=true`,
         method: 'GET',
-        // transformResponse: (response, meta, arg) => response.items,
-      }),
     }),
+    transformResponse: (response, meta, arg) =>  response.items
+  }),
     invalidatesTags: [{ type: "SandboxSpaces", id: "LIST" }],
   }),
 })
