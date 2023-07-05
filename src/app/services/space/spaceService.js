@@ -24,9 +24,24 @@ export const spaceApi = createApi({
     }),
     transformResponse: (response, meta, arg) =>  response.items
   }),
+  getSpaces: build.query({
+    query: () => ({
+      url: `/spaces/search`,
+      method: 'GET',
+  }),
+  transformResponse: (response, meta, arg) =>  response.items,
+  }),
+  getEducationSpaces: build.query({
+    query: ()=>({
+      url:`/spaces/search?category=education`,
+      method: 'GET',
+    }),
+    transformResponse: (response, meta, arg) =>  response.items
+  
+}),
     invalidatesTags: [{ type: "SandboxSpaces", id: "LIST" }],
   }),
 })
 
 // export react hook
-export const { useGetSandboxSpacesQuery } = spaceApi
+export const { useGetSandboxSpacesQuery, useGetSpacesQuery, useGetEducationSpacesQuery } = spaceApi

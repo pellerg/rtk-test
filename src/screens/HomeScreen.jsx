@@ -10,11 +10,18 @@ const HomeScreen = () => {
     data: sandboxSpaces,
     isLoading,
     isFetching,
-    isSuccess,
+    isSuccess: isSandboxSpacesSuccess,
     isUninitialized,
   } = spaceApi.useGetSandboxSpacesQuery("", {
     skip,
   });
+
+  const {data: allSpaces, isSuccess: allSpacesSuccess} = spaceApi.useGetSpacesQuery("", {skip})
+  const {data: educationSpaces, isSuccess: educationSpacesSuccess} = spaceApi.useGetEducationSpacesQuery("", {skip})
+
+
+
+  
 
   useEffect(() => {
     setSkip(!isLoggedIn);
@@ -30,20 +37,58 @@ const HomeScreen = () => {
               <strong>Sandbox spaces:</strong>
             </span>
           </div>
-          {isLoading && <React.Fragment>
-            {console.log("LOADING SPACES")}
-            <span>Loading spaces...</span></React.Fragment>}
-            {isFetching && <React.Fragment>
-            {console.log("FETCHING SPACES")}
-            <span>isFetching spaces...</span></React.Fragment>}
-          {isSuccess &&
+          {isLoading && (
+            <React.Fragment>
+              {console.log("LOADING SPACES")}
+              <span>Loading spaces...</span>
+            </React.Fragment>
+          )}
+          {isFetching && (
+            <React.Fragment>
+              {console.log("FETCHING SPACES")}
+              <span>isFetching spaces...</span>
+            </React.Fragment>
+          )}
+          {isSandboxSpacesSuccess &&
             sandboxSpaces?.map((space) => (
               <React.Fragment key={space.uuid}>
                 <span>{space.name}</span>
                 <br />
               </React.Fragment>
             ))}
+
+          <div>
+            <span>
+              <strong>All spaces:</strong>
+            </span>
+          </div>
+          {allSpacesSuccess &&
+          allSpaces?.map((space) => (
+            <React.Fragment key={space.uuid}>
+              
+              {space && <React.Fragment><span>{space.name}</span>
+              <br /></React.Fragment>}
+              
+            </React.Fragment>
+          ))}
+
+<div>
+            <span>
+              <strong>Education spaces:</strong>
+            </span>
+          </div>
+          {educationSpacesSuccess &&
+          educationSpaces?.map((space) => (
+            <React.Fragment key={space.uuid}>
+              
+              {space && <React.Fragment><span>{space.name}</span>
+              <br /></React.Fragment>}
+              
+            </React.Fragment>
+          ))}
         </div>
+        
+        
       )}
     </div>
   );

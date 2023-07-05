@@ -20,9 +20,7 @@ const LoginScreen = () => {
     if (isLoggedIn) {
       navigate('/user-profile')
     }
-  }, [navigate, isLoggedIn])
-
-  
+  }, [navigate, isLoggedIn])  
 
   const submitForm = (data) => {
     dispatch(userLogin(data))
