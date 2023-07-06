@@ -1,0 +1,5139 @@
+{
+    "definitions": {
+       "AccessToken": {
+          "properties": {
+             "access_token": {
+                "type": "string"
+             },
+             "expires": {
+                "type": "integer"
+             }
+          },
+          "type": "object"
+       },
+       "BasicProject": {
+          "properties": {
+             "auto_load": {
+                "type": "boolean"
+             },
+             "created_by": {
+                "type": "string"
+             },
+             "is_public": {
+                "type": "boolean"
+             },
+             "is_sandbox": {
+                "type": "boolean"
+             },
+             "locked_by": {
+                "format": "email",
+                "type": "string"
+             },
+             "name": {
+                "type": "string"
+             },
+             "number_of_smartboards": {
+                "type": "integer"
+             },
+             "permission_id": {
+                "type": "integer"
+             },
+             "sticky": {
+                "type": "boolean"
+             },
+             "unlisted": {
+                "type": "boolean"
+             },
+             "uuid": {
+                "format": "uuid",
+                "type": "string"
+             }
+          },
+          "type": "object"
+       },
+       "Content": {
+          "properties": {
+             "content_type": {
+                "type": "string"
+             },
+             "link": {
+                "type": "string"
+             }
+          },
+          "type": "object"
+       },
+       "CreateSpace": {
+          "properties": {
+             "affiliations": {
+                "type": "string"
+             },
+             "category": {
+                "type": "string"
+             },
+             "description": {
+                "type": "string"
+             },
+             "domain": {
+                "type": "string",
+                "x-nullable": true
+             },
+             "is_available_web": {
+                "type": "boolean"
+             },
+             "is_public": {
+                "type": "boolean"
+             },
+             "is_sandbox": {
+                "type": "boolean"
+             },
+             "min_req_client_version": {
+                "type": "string"
+             },
+             "monitoring_enabled": {
+                "type": "boolean"
+             },
+             "name": {
+                "type": "string"
+             },
+             "owner": {
+                "format": "email",
+                "type": "string"
+             },
+             "prototype_uuid": {
+                "format": "uuid",
+                "type": "string"
+             },
+             "sandbox_space_uuid": {
+                "format": "uuid",
+                "type": "string"
+             },
+             "subtitle": {
+                "type": "string",
+                "x-nullable": true
+             },
+             "tag": {
+                "items": {
+                   "type": "string"
+                },
+                "type": "array"
+             },
+             "unlisted": {
+                "type": "boolean"
+             }
+          },
+          "type": "object"
+       },
+       "InstallerDownload": {
+          "properties": {},
+          "type": "object"
+       },
+       "InstallerDownloadResponse": {
+          "properties": {
+             "expires": {
+                "type": "integer"
+             },
+             "url": {
+                "type": "string"
+             }
+          },
+          "type": "object"
+       },
+       "InstallerStain": {
+          "properties": {
+             "created_at": {
+                "format": "date-time",
+                "readOnly": true,
+                "type": "string"
+             },
+             "expire_at": {
+                "format": "date-time",
+                "readOnly": true,
+                "type": "string"
+             },
+             "nanoid": {
+                "maxLength": 14,
+                "type": "string"
+             }
+          },
+          "required": [
+             "nanoid"
+          ],
+          "type": "object"
+       },
+       "InstallerStainResponse": {
+          "properties": {
+             "space_uuid": {
+                "format": "uuid",
+                "type": "string"
+             }
+          },
+          "type": "object"
+       },
+       "LatestVersion": {
+          "properties": {
+             "version": {
+                "type": "string"
+             },
+             "versioninfo": {
+                "type": "string"
+             }
+          },
+          "type": "object"
+       },
+       "ListOfSpacesSchemaKwargs": {
+          "properties": {
+             "name": {
+                "type": "string"
+             },
+             "tag": {
+                "items": {
+                   "type": "string"
+                },
+                "type": "array"
+             },
+             "uuid": {
+                "items": {
+                   "type": "string"
+                },
+                "type": "array"
+             }
+          },
+          "type": "object"
+       },
+       "Login": {
+          "properties": {
+             "email": {
+                "format": "email",
+                "type": "string"
+             },
+             "password": {
+                "type": "string"
+             }
+          },
+          "required": [
+             "email",
+             "password"
+          ],
+          "type": "object"
+       },
+       "LoginReponse": {
+          "properties": {
+             "access_token": {
+                "type": "string"
+             },
+             "expires": {
+                "type": "integer"
+             },
+             "refresh_token": {
+                "type": "string"
+             }
+          },
+          "type": "object"
+       },
+       "NestedProduct": {
+          "properties": {
+             "billing_period": {
+                "type": "string"
+             },
+             "price_id": {
+                "type": "string"
+             },
+             "product_id": {
+                "type": "string"
+             },
+             "quantity": {
+                "type": "integer"
+             }
+          },
+          "type": "object"
+       },
+       "Oauth2Response": {
+          "properties": {
+             "url": {
+                "format": "url",
+                "type": "string"
+             }
+          },
+          "type": "object"
+       },
+       "Orientation": {
+          "properties": {
+             "w": {
+                "type": "number"
+             },
+             "x": {
+                "type": "number"
+             },
+             "y": {
+                "type": "number"
+             },
+             "z": {
+                "type": "number"
+             }
+          },
+          "type": "object"
+       },
+       "OtfAsset": {
+          "properties": {
+             "created_at": {
+                "format": "date-time",
+                "type": "string"
+             },
+             "dep_size": {
+                "type": "integer"
+             },
+             "description": {
+                "maxLength": 1024,
+                "type": "string",
+                "x-nullable": true
+             },
+             "id": {
+                "type": "integer"
+             },
+             "name": {
+                "maxLength": 512,
+                "type": "string"
+             },
+             "presigned_url_zip": {
+                "type": "string"
+             },
+             "space_affinities": {
+                "items": {
+                   "$ref": "#/definitions/SpaceAffinity"
+                },
+                "type": "array"
+             },
+             "unlisted": {
+                "type": "boolean"
+             },
+             "updated_at": {
+                "format": "date-time",
+                "type": "string",
+                "x-nullable": true
+             },
+             "uuid": {
+                "format": "uuid",
+                "type": "string"
+             }
+          },
+          "required": [
+             "name"
+          ],
+          "type": "object"
+       },
+       "OtfAssetExtended": {
+          "properties": {
+             "created_at": {
+                "format": "date-time",
+                "type": "string"
+             },
+             "dep_size": {
+                "type": "integer"
+             },
+             "description": {
+                "maxLength": 1024,
+                "type": "string",
+                "x-nullable": true
+             },
+             "id": {
+                "type": "integer"
+             },
+             "name": {
+                "maxLength": 512,
+                "type": "string"
+             },
+             "presigned_url_zip": {
+                "type": "string"
+             },
+             "space_affinities": {
+                "items": {
+                   "$ref": "#/definitions/SpaceAffinity"
+                },
+                "type": "array"
+             },
+             "space_prototypes": {
+                "items": {
+                   "$ref": "#/definitions/OtfAssetSearch"
+                },
+                "type": "array"
+             },
+             "unlisted": {
+                "type": "boolean"
+             },
+             "updated_at": {
+                "format": "date-time",
+                "type": "string",
+                "x-nullable": true
+             },
+             "uuid": {
+                "format": "uuid",
+                "type": "string"
+             }
+          },
+          "required": [
+             "name"
+          ],
+          "type": "object"
+       },
+       "OtfAssetPatch": {
+          "properties": {
+             "description": {
+                "type": "string",
+                "x-nullable": true
+             },
+             "name": {
+                "type": "string"
+             },
+             "unlisted": {
+                "type": "boolean"
+             }
+          },
+          "type": "object"
+       },
+       "OtfAssetSearch": {
+          "properties": {
+             "description": {
+                "type": "string",
+                "x-nullable": true
+             },
+             "name": {
+                "type": "string",
+                "x-nullable": true
+             },
+             "space_affinity": {
+                "format": "uuid",
+                "type": "string",
+                "x-nullable": true
+             },
+             "uuid": {
+                "format": "uuid",
+                "type": "string",
+                "x-nullable": true
+             }
+          },
+          "type": "object"
+       },
+       "PaginatedProjectDetails": {
+          "properties": {
+             "items": {
+                "items": {
+                   "$ref": "#/definitions/ProjectDetails"
+                },
+                "type": "array"
+             },
+             "page": {
+                "type": "integer"
+             },
+             "pages": {
+                "type": "integer"
+             },
+             "total_records": {
+                "type": "integer"
+             }
+          },
+          "type": "object"
+       },
+       "PaginatedSpace": {
+          "properties": {
+             "items": {
+                "items": {
+                   "$ref": "#/definitions/SpaceDetails"
+                },
+                "type": "array"
+             },
+             "page": {
+                "type": "integer"
+             },
+             "pages": {
+                "type": "integer"
+             },
+             "total_records": {
+                "type": "integer"
+             }
+          },
+          "type": "object"
+       },
+       "PasswordChange": {
+          "properties": {
+             "current_password": {
+                "minLength": 8,
+                "type": "string"
+             },
+             "new_password": {
+                "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[<>()[\\]{}\\\\\\/\\+\\*=_.,:;'\"&\\^%$#@!?`~|€\\-]).{8,}$",
+                "type": "string"
+             }
+          },
+          "required": [
+             "current_password",
+             "new_password"
+          ],
+          "type": "object"
+       },
+       "PasswordChangeWithToken": {
+          "properties": {
+             "new_password": {
+                "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[<>()[\\]{}\\\\\\/\\+\\*=_.,:;'\"&\\^%$#@!?`~|€\\-]).{8,}$",
+                "type": "string"
+             }
+          },
+          "required": [
+             "new_password"
+          ],
+          "type": "object"
+       },
+       "Placeholder": {
+          "properties": {
+             "orientation": {
+                "allOf": [
+                   {
+                      "$ref": "#/definitions/Orientation"
+                   }
+                ],
+                "default": {}
+             },
+             "position": {
+                "allOf": [
+                   {
+                      "$ref": "#/definitions/Position"
+                   }
+                ],
+                "default": {}
+             },
+             "resolution": {
+                "allOf": [
+                   {
+                      "$ref": "#/definitions/Resolution"
+                   }
+                ],
+                "default": {}
+             },
+             "scale": {
+                "allOf": [
+                   {
+                      "$ref": "#/definitions/Scale"
+                   }
+                ],
+                "default": {}
+             },
+             "size": {
+                "allOf": [
+                   {
+                      "$ref": "#/definitions/Size"
+                   }
+                ],
+                "default": {}
+             }
+          },
+          "type": "object"
+       },
+       "Position": {
+          "properties": {
+             "x": {
+                "type": "number"
+             },
+             "y": {
+                "type": "number"
+             },
+             "z": {
+                "type": "number"
+             }
+          },
+          "type": "object"
+       },
+       "ProjectDetails": {
+          "properties": {
+             "auto_load": {
+                "type": "boolean"
+             },
+             "created_at": {
+                "format": "date-time",
+                "type": "string"
+             },
+             "created_by": {
+                "type": "string"
+             },
+             "description": {
+                "type": "string"
+             },
+             "domain": {
+                "type": "string"
+             },
+             "is_public": {
+                "type": "boolean"
+             },
+             "is_sandbox": {
+                "type": "boolean"
+             },
+             "locked_by": {
+                "format": "email",
+                "type": "string"
+             },
+             "name": {
+                "type": "string"
+             },
+             "number_of_smartboards": {
+                "type": "integer"
+             },
+             "permission_id": {
+                "type": "integer"
+             },
+             "shared_with": {
+                "items": {
+                   "$ref": "#/definitions/SharedWith"
+                },
+                "type": "array"
+             },
+             "smartboards": {
+                "items": {
+                   "$ref": "#/definitions/SmartboardDisplay"
+                },
+                "type": "array"
+             },
+             "space_name": {
+                "type": "string"
+             },
+             "space_uuid": {
+                "type": "string"
+             },
+             "sticky": {
+                "type": "boolean"
+             },
+             "thumbnail": {
+                "type": "string"
+             },
+             "unlisted": {
+                "type": "boolean"
+             },
+             "updated_at": {
+                "format": "date-time",
+                "type": "string"
+             },
+             "uuid": {
+                "format": "uuid",
+                "type": "string"
+             }
+          },
+          "type": "object"
+       },
+       "ProjectPrototype": {
+          "properties": {
+             "created_at": {
+                "format": "date-time",
+                "readOnly": true,
+                "type": "string"
+             },
+             "layout": {
+                "x-nullable": true
+             },
+             "name": {
+                "maxLength": 256,
+                "type": "string"
+             },
+             "updated_at": {
+                "format": "date-time",
+                "readOnly": true,
+                "type": "string",
+                "x-nullable": true
+             },
+             "uuid": {
+                "format": "uuid",
+                "readOnly": true,
+                "type": "string"
+             }
+          },
+          "required": [
+             "name"
+          ],
+          "type": "object"
+       },
+       "ProjectSetter": {
+          "properties": {
+             "auto_load": {
+                "type": "boolean"
+             },
+             "description": {
+                "type": "string",
+                "x-nullable": true
+             },
+             "is_public": {
+                "type": "boolean"
+             },
+             "name": {
+                "type": "string"
+             },
+             "prototype_uuid": {
+                "format": "uuid",
+                "type": "string",
+                "x-nullable": true
+             },
+             "space_uuid": {
+                "format": "uuid",
+                "type": "string"
+             },
+             "sticky": {
+                "type": "boolean"
+             },
+             "unlisted": {
+                "type": "boolean"
+             }
+          },
+          "type": "object"
+       },
+       "ProjectUpdate": {
+          "properties": {
+             "auto_load": {
+                "type": "boolean"
+             },
+             "description": {
+                "type": "string",
+                "x-nullable": true
+             },
+             "is_public": {
+                "type": "boolean"
+             },
+             "is_sandbox": {
+                "type": "boolean"
+             },
+             "name": {
+                "type": "string"
+             },
+             "project_uuid": {
+                "format": "uuid",
+                "type": "string"
+             },
+             "shared_with": {
+                "items": {
+                   "$ref": "#/definitions/SharedWith"
+                },
+                "type": "array"
+             },
+             "sticky": {
+                "type": "boolean"
+             },
+             "unlisted": {
+                "type": "boolean"
+             }
+          },
+          "type": "object"
+       },
+       "Provider": {
+          "properties": {
+             "provider": {
+                "type": "string"
+             },
+             "sid": {
+                "type": "string"
+             }
+          },
+          "type": "object"
+       },
+       "PublicKey": {
+          "properties": {
+             "base64": {
+                "type": "string"
+             },
+             "pubKey": {
+                "type": "string"
+             }
+          },
+          "type": "object"
+       },
+       "Registration": {
+          "properties": {
+             "email": {
+                "format": "email",
+                "type": "string"
+             },
+             "first_name": {
+                "minLength": 3,
+                "type": "string"
+             },
+             "last_name": {
+                "minLength": 3,
+                "type": "string"
+             },
+             "password": {
+                "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[<>()[\\]{}\\\\\\/\\+\\*=_.,:;'\"&\\^%$#@!?`~|€\\-]).{8,}$",
+                "type": "string"
+             },
+             "purpose": {
+                "type": "string"
+             },
+             "subscribed_to_newsletter": {
+                "type": "boolean"
+             }
+          },
+          "required": [
+             "email",
+             "first_name",
+             "last_name",
+             "password"
+          ],
+          "type": "object"
+       },
+       "Resolution": {
+          "properties": {
+             "height": {
+                "type": "integer"
+             },
+             "width": {
+                "type": "integer"
+             }
+          },
+          "type": "object"
+       },
+       "Scale": {
+          "properties": {
+             "x": {
+                "type": "integer"
+             },
+             "y": {
+                "type": "integer"
+             },
+             "z": {
+                "type": "integer"
+             }
+          },
+          "type": "object"
+       },
+       "ScheduledSubscriptionItems": {
+          "properties": {
+             "price_id": {
+                "type": "string"
+             },
+             "product_id": {
+                "type": "string"
+             },
+             "quantity": {
+                "type": "integer"
+             }
+          },
+          "type": "object"
+       },
+       "Selectionpanel": {
+          "properties": {
+             "id": {
+                "readOnly": true,
+                "type": "integer"
+             },
+             "name": {
+                "maxLength": 256,
+                "type": "string",
+                "x-nullable": true
+             },
+             "projects": {
+                "items": {
+                   "$ref": "#/definitions/BasicProject"
+                },
+                "type": "array"
+             },
+             "subtitle": {
+                "maxLength": 256,
+                "type": "string",
+                "x-nullable": true
+             },
+             "uuid": {
+                "format": "uuid",
+                "readOnly": true,
+                "type": "string"
+             }
+          },
+          "type": "object"
+       },
+       "SelectionpanelSetter": {
+          "properties": {
+             "placeholder": {
+                "$ref": "#/definitions/Placeholder"
+             },
+             "project_uuid": {
+                "format": "uuid",
+                "type": "string"
+             }
+          },
+          "type": "object"
+       },
+       "SelectionpanelSetterResponse": {
+          "properties": {
+             "uuid": {
+                "format": "uuid",
+                "type": "string"
+             }
+          },
+          "type": "object"
+       },
+       "SharedWith": {
+          "properties": {
+             "company_name": {
+                "type": "string"
+             },
+             "email": {
+                "format": "email",
+                "type": "string"
+             },
+             "first_name": {
+                "type": "string"
+             },
+             "last_name": {
+                "type": "string"
+             },
+             "permission": {
+                "type": "string"
+             },
+             "permission_id": {
+                "type": "integer"
+             },
+             "uuid": {
+                "format": "uuid",
+                "type": "string"
+             }
+          },
+          "required": [
+             "email",
+             "permission_id"
+          ],
+          "type": "object"
+       },
+       "Size": {
+          "properties": {
+             "height": {
+                "type": "integer"
+             },
+             "width": {
+                "type": "integer"
+             }
+          },
+          "type": "object"
+       },
+       "Smartboard": {
+          "properties": {
+             "auto_resolution": {
+                "type": "boolean"
+             },
+             "content_type": {
+                "enum": [
+                   "banner_widget",
+                   "customlink",
+                   "file",
+                   "image",
+                   "link",
+                   "pdf",
+                   "staticWeb"
+                ],
+                "maxLength": 13,
+                "x-nullable": true
+             },
+             "is_global": {
+                "type": "boolean"
+             },
+             "is_visible": {
+                "type": "boolean"
+             },
+             "live_link": {
+                "maxLength": 64,
+                "type": "string",
+                "x-nullable": true
+             },
+             "locked": {
+                "type": "boolean"
+             },
+             "orientation": {
+                "x-nullable": true
+             },
+             "position": {
+                "x-nullable": true
+             },
+             "preview_image": {
+                "maxLength": 64,
+                "type": "string",
+                "x-nullable": true
+             },
+             "properties": {
+                "x-nullable": true
+             },
+             "resolution": {
+                "x-nullable": true
+             },
+             "scale": {
+                "x-nullable": true
+             },
+             "size": {
+                "x-nullable": true
+             },
+             "size_ratio": {
+                "maxLength": 64,
+                "type": "string",
+                "x-nullable": true
+             },
+             "type": {
+                "enum": [
+                   "billboard",
+                   "image frame",
+                   "selectionpanel",
+                   "sleepy smartboard",
+                   "smartboard"
+                ],
+                "maxLength": 17,
+                "x-nullable": true
+             },
+             "uuid": {
+                "format": "uuid",
+                "readOnly": true,
+                "type": "string"
+             }
+          },
+          "type": "object"
+       },
+       "SmartboardDisplay": {
+          "properties": {
+             "client_type": {
+                "type": "string"
+             },
+             "content_type": {
+                "type": "string"
+             },
+             "locked": {
+                "type": "boolean"
+             },
+             "orientation": {
+                "type": "object"
+             },
+             "position": {
+                "type": "object"
+             },
+             "properties": {
+                "allOf": [
+                   {
+                      "$ref": "#/definitions/SmartboardProperties"
+                   }
+                ],
+                "default": {}
+             },
+             "resolution": {
+                "type": "object"
+             },
+             "scale": {
+                "type": "object"
+             },
+             "size": {
+                "type": "object"
+             },
+             "url": {
+                "type": "string"
+             },
+             "uuid": {
+                "format": "uuid",
+                "type": "string"
+             },
+             "webmw_embeddable": {
+                "type": "boolean"
+             }
+          },
+          "type": "object"
+       },
+       "SmartboardProperties": {
+          "properties": {
+             "capsule": {
+                "type": "boolean"
+             },
+             "force_load_on_web": {
+                "type": "boolean"
+             },
+             "hidden": {
+                "type": "boolean"
+             },
+             "img_wh_ratio": {
+                "type": "number"
+             },
+             "sleep": {
+                "type": "boolean"
+             },
+             "smartboard_bar": {
+                "type": "boolean"
+             },
+             "transparent": {
+                "type": "boolean"
+             },
+             "wake": {
+                "type": "boolean"
+             }
+          },
+          "type": "object"
+       },
+       "SmartboardSetter": {
+          "properties": {
+             "client_type": {
+                "type": "string"
+             },
+             "content_type": {
+                "type": "string"
+             },
+             "link": {
+                "type": "string"
+             },
+             "placeholder": {
+                "$ref": "#/definitions/Placeholder"
+             },
+             "project_uuid": {
+                "format": "uuid",
+                "type": "string"
+             },
+             "properties": {
+                "allOf": [
+                   {
+                      "$ref": "#/definitions/SmartboardProperties"
+                   }
+                ],
+                "default": {}
+             }
+          },
+          "type": "object"
+       },
+       "SmartboardSetterResponse": {
+          "properties": {
+             "uuid": {
+                "format": "uuid",
+                "type": "string"
+             }
+          },
+          "type": "object"
+       },
+       "SmartboardUpdate": {
+          "properties": {
+             "client_type": {
+                "type": "string"
+             },
+             "properties": {
+                "allOf": [
+                   {
+                      "$ref": "#/definitions/SmartboardProperties"
+                   }
+                ],
+                "default": {}
+             }
+          },
+          "type": "object"
+       },
+       "Space": {
+          "properties": {
+             "affiliations": {
+                "maxLength": 256,
+                "type": "string",
+                "x-nullable": true
+             },
+             "created_at": {
+                "format": "date-time",
+                "readOnly": true,
+                "type": "string"
+             },
+             "description": {
+                "maxLength": 1024,
+                "type": "string",
+                "x-nullable": true
+             },
+             "domain": {
+                "maxLength": 64,
+                "type": "string",
+                "x-nullable": true
+             },
+             "is_available_web": {
+                "type": "boolean"
+             },
+             "is_public": {
+                "type": "boolean"
+             },
+             "is_sandbox": {
+                "type": "boolean"
+             },
+             "min_req_client_version": {
+                "maxLength": 64,
+                "type": "string",
+                "x-nullable": true
+             },
+             "monitoring_enabled": {
+                "type": "boolean"
+             },
+             "name": {
+                "maxLength": 256,
+                "type": "string"
+             },
+             "owned_by": {
+                "type": "string"
+             },
+             "prototype_id": {
+                "type": "integer"
+             },
+             "prototype_uuid": {
+                "format": "uuid",
+                "type": "string"
+             },
+             "status": {
+                "enum": [
+                   "active",
+                   "disabled",
+                   "suspended",
+                   "locked",
+                   "scheduled to remove",
+                   "unavailable"
+                ],
+                "maxLength": 19
+             },
+             "subtitle": {
+                "maxLength": 256,
+                "type": "string",
+                "x-nullable": true
+             },
+             "tag": {
+                "x-nullable": true
+             },
+             "thumbnail": {
+                "maxLength": 256,
+                "readOnly": true,
+                "type": "string",
+                "x-nullable": true
+             },
+             "unlisted": {
+                "type": "boolean"
+             },
+             "updated_at": {
+                "format": "date-time",
+                "readOnly": true,
+                "type": "string",
+                "x-nullable": true
+             },
+             "uuid": {
+                "format": "uuid",
+                "readOnly": true,
+                "type": "string"
+             }
+          },
+          "required": [
+             "name",
+             "prototype_id"
+          ],
+          "type": "object"
+       },
+       "SpaceAffinity": {
+          "properties": {
+             "name": {
+                "type": "string"
+             },
+             "uuid": {
+                "format": "uuid",
+                "type": "string"
+             }
+          },
+          "type": "object"
+       },
+       "SpaceDependency": {
+          "properties": {
+             "dep_size": {
+                "type": "integer"
+             },
+             "name": {
+                "type": "string"
+             },
+             "presigned_url_zip": {
+                "type": "string"
+             },
+             "updated_at": {
+                "format": "date-time",
+                "type": "string"
+             },
+             "uuid": {
+                "format": "uuid",
+                "type": "string"
+             }
+          },
+          "type": "object"
+       },
+       "SpaceDetails": {
+          "properties": {
+             "affiliations": {
+                "type": "string"
+             },
+             "category": {
+                "items": {
+                   "type": "string"
+                },
+                "type": "array"
+             },
+             "created_at": {
+                "format": "date-time",
+                "type": "string"
+             },
+             "creator": {
+                "type": "string"
+             },
+             "description": {
+                "type": "string"
+             },
+             "domain": {
+                "type": "string"
+             },
+             "is_available_web": {
+                "type": "boolean"
+             },
+             "is_favorite": {
+                "type": "boolean"
+             },
+             "is_public": {
+                "type": "boolean"
+             },
+             "is_sandbox": {
+                "type": "boolean"
+             },
+             "magic_link": {
+                "type": "string"
+             },
+             "magic_link_web": {
+                "type": "string"
+             },
+             "min_req_client_version": {
+                "type": "string"
+             },
+             "name": {
+                "type": "string"
+             },
+             "permission_id": {
+                "type": "integer"
+             },
+             "status": {
+                "type": "string"
+             },
+             "subtitle": {
+                "type": "string"
+             },
+             "tag": {
+                "items": {
+                   "type": "string"
+                },
+                "type": "array"
+             },
+             "thumbnail": {
+                "type": "string"
+             },
+             "updated_at": {
+                "format": "date-time",
+                "type": "string"
+             },
+             "uuid": {
+                "format": "uuid",
+                "type": "string"
+             },
+             "version": {
+                "type": "integer"
+             }
+          },
+          "type": "object"
+       },
+       "SpaceDetailsExtended": {
+          "properties": {
+             "affiliations": {
+                "type": "string"
+             },
+             "categories": {
+                "items": {
+                   "type": "string"
+                },
+                "type": "array"
+             },
+             "category": {
+                "items": {
+                   "type": "string"
+                },
+                "type": "array"
+             },
+             "created_at": {
+                "format": "date-time",
+                "type": "string"
+             },
+             "created_by": {
+                "type": "string"
+             },
+             "creator": {
+                "type": "string"
+             },
+             "description": {
+                "type": "string"
+             },
+             "domain": {
+                "type": "string"
+             },
+             "is_available_web": {
+                "type": "boolean"
+             },
+             "is_favorite": {
+                "type": "boolean"
+             },
+             "is_public": {
+                "type": "boolean"
+             },
+             "is_sandbox": {
+                "type": "boolean"
+             },
+             "magic_link": {
+                "type": "string"
+             },
+             "magic_link_web": {
+                "type": "string"
+             },
+             "min_req_client_version": {
+                "type": "string"
+             },
+             "monitoring_enabled": {
+                "type": "boolean"
+             },
+             "name": {
+                "type": "string"
+             },
+             "owned_by": {
+                "type": "string"
+             },
+             "permission_id": {
+                "type": "integer"
+             },
+             "project_prototypes": {
+                "items": {
+                   "$ref": "#/definitions/ProjectPrototype"
+                },
+                "type": "array"
+             },
+             "projects": {
+                "items": {
+                   "$ref": "#/definitions/BasicProject"
+                },
+                "type": "array"
+             },
+             "shared_with": {
+                "items": {
+                   "$ref": "#/definitions/SharedWith"
+                },
+                "type": "array"
+             },
+             "status": {
+                "type": "string"
+             },
+             "subtitle": {
+                "type": "string"
+             },
+             "tag": {
+                "items": {
+                   "type": "string"
+                },
+                "type": "array"
+             },
+             "thumbnail": {
+                "type": "string"
+             },
+             "unlisted": {
+                "type": "boolean"
+             },
+             "updated_at": {
+                "format": "date-time",
+                "type": "string"
+             },
+             "used_storage_percentage": {
+                "type": "number"
+             },
+             "uuid": {
+                "format": "uuid",
+                "type": "string"
+             },
+             "version": {
+                "type": "integer"
+             }
+          },
+          "type": "object"
+       },
+       "SpaceDetailsOnUser": {
+          "properties": {
+             "affiliations": {
+                "type": "string"
+             },
+             "category": {
+                "items": {
+                   "type": "string"
+                },
+                "type": "array"
+             },
+             "created_at": {
+                "format": "date-time",
+                "type": "string"
+             },
+             "creator": {
+                "type": "string"
+             },
+             "description": {
+                "type": "string"
+             },
+             "domain": {
+                "type": "string"
+             },
+             "is_available_web": {
+                "type": "boolean"
+             },
+             "is_favorite": {
+                "type": "boolean"
+             },
+             "is_public": {
+                "type": "boolean"
+             },
+             "is_sandbox": {
+                "type": "boolean"
+             },
+             "magic_link": {
+                "type": "string"
+             },
+             "magic_link_web": {
+                "type": "string"
+             },
+             "min_req_client_version": {
+                "type": "string"
+             },
+             "name": {
+                "type": "string"
+             },
+             "permission_id": {
+                "type": "integer"
+             },
+             "status": {
+                "type": "string"
+             },
+             "subtitle": {
+                "type": "string"
+             },
+             "tag": {
+                "items": {
+                   "type": "string"
+                },
+                "type": "array"
+             },
+             "thumbnail": {
+                "type": "string"
+             },
+             "updated_at": {
+                "format": "date-time",
+                "type": "string"
+             },
+             "uuid": {
+                "format": "uuid",
+                "type": "string"
+             },
+             "version": {
+                "type": "integer"
+             }
+          },
+          "type": "object"
+       },
+       "SpaceDownload": {
+          "properties": {
+             "otf_assets": {
+                "items": {
+                   "$ref": "#/definitions/SpaceDependency"
+                },
+                "type": "array"
+             },
+             "prototype_updated_at": {
+                "format": "date-time",
+                "type": "string"
+             },
+             "prototype_uuid": {
+                "type": "string"
+             },
+             "resource_tar": {
+                "format": "url",
+                "type": "string"
+             },
+             "resource_tar_length": {
+                "type": "integer"
+             },
+             "resource_zip": {
+                "format": "url",
+                "type": "string"
+             },
+             "resource_zip_length": {
+                "type": "integer"
+             },
+             "version": {
+                "type": "integer"
+             }
+          },
+          "type": "object"
+       },
+       "SpaceLimit": {
+          "properties": {
+             "max_user": {
+                "type": "integer"
+             },
+             "used_user": {
+                "type": "integer"
+             }
+          },
+          "type": "object"
+       },
+       "SpacePrototype": {
+          "properties": {
+             "asset_pack_version": {
+                "type": "integer",
+                "x-nullable": true
+             },
+             "created_at": {
+                "format": "date-time",
+                "readOnly": true,
+                "type": "string"
+             },
+             "is_instantiatable": {
+                "type": "boolean"
+             },
+             "name": {
+                "maxLength": 256,
+                "type": "string"
+             },
+             "updated_at": {
+                "format": "date-time",
+                "readOnly": true,
+                "type": "string",
+                "x-nullable": true
+             },
+             "uuid": {
+                "format": "uuid",
+                "readOnly": true,
+                "type": "string"
+             },
+             "version": {
+                "type": "integer",
+                "x-nullable": true
+             }
+          },
+          "required": [
+             "name"
+          ],
+          "type": "object"
+       },
+       "SpacePrototypeAssetPackVersion": {
+          "properties": {
+             "asset_pack_zip": {
+                "format": "uuid",
+                "type": "string",
+                "x-nullable": true
+             },
+             "created_at": {
+                "format": "date-time",
+                "type": "string"
+             },
+             "presigned_url_zip": {
+                "type": "string"
+             },
+             "updated_at": {
+                "format": "date-time",
+                "type": "string",
+                "x-nullable": true
+             },
+             "version": {
+                "type": "integer",
+                "x-nullable": true
+             }
+          },
+          "type": "object"
+       },
+       "SpacePrototypeExtended": {
+          "properties": {
+             "asset_pack_version": {
+                "type": "integer",
+                "x-nullable": true
+             },
+             "asset_pack_versions": {
+                "items": {
+                   "$ref": "#/definitions/SpacePrototypeAssetPackVersion"
+                },
+                "type": "array"
+             },
+             "created_at": {
+                "format": "date-time",
+                "readOnly": true,
+                "type": "string"
+             },
+             "is_instantiatable": {
+                "type": "boolean"
+             },
+             "name": {
+                "maxLength": 256,
+                "type": "string"
+             },
+             "otf_assets": {
+                "items": {
+                   "$ref": "#/definitions/OtfAsset"
+                },
+                "type": "array"
+             },
+             "project_prototypes": {
+                "items": {
+                   "$ref": "#/definitions/ProjectPrototype"
+                },
+                "type": "array"
+             },
+             "prototype_versions": {
+                "items": {
+                   "$ref": "#/definitions/SpacePrototypeVersion"
+                },
+                "type": "array"
+             },
+             "spaces": {
+                "items": {
+                   "$ref": "#/definitions/Space"
+                },
+                "type": "array"
+             },
+             "updated_at": {
+                "format": "date-time",
+                "readOnly": true,
+                "type": "string",
+                "x-nullable": true
+             },
+             "uuid": {
+                "format": "uuid",
+                "readOnly": true,
+                "type": "string"
+             },
+             "version": {
+                "type": "integer",
+                "x-nullable": true
+             }
+          },
+          "required": [
+             "name"
+          ],
+          "type": "object"
+       },
+       "SpacePrototypeVersion": {
+          "properties": {
+             "created_at": {
+                "format": "date-time",
+                "type": "string"
+             },
+             "presigned_url_tar": {
+                "type": "string"
+             },
+             "presigned_url_zip": {
+                "type": "string"
+             },
+             "resource_tar": {
+                "format": "uuid",
+                "type": "string",
+                "x-nullable": true
+             },
+             "resource_zip": {
+                "format": "uuid",
+                "type": "string",
+                "x-nullable": true
+             },
+             "updated_at": {
+                "format": "date-time",
+                "type": "string",
+                "x-nullable": true
+             },
+             "version": {
+                "type": "integer",
+                "x-nullable": true
+             }
+          },
+          "type": "object"
+       },
+       "SpaceStorage": {
+          "properties": {
+             "free_storage": {
+                "type": "integer"
+             }
+          },
+          "type": "object"
+       },
+       "Story": {
+          "properties": {
+             "name": {
+                "maxLength": 256,
+                "type": "string"
+             },
+             "story": {
+                "items": {
+                   "$ref": "#/definitions/StoryCoordinate"
+                },
+                "type": "array"
+             },
+             "uuid": {
+                "format": "uuid",
+                "readOnly": true,
+                "type": "string"
+             }
+          },
+          "required": [
+             "name"
+          ],
+          "type": "object"
+       },
+       "StoryCoordinate": {
+          "properties": {
+             "orientation": {
+                "allOf": [
+                   {
+                      "$ref": "#/definitions/Orientation"
+                   }
+                ],
+                "default": {}
+             },
+             "position": {
+                "allOf": [
+                   {
+                      "$ref": "#/definitions/Position"
+                   }
+                ],
+                "default": {}
+             },
+             "resolution": {
+                "allOf": [
+                   {
+                      "$ref": "#/definitions/Resolution"
+                   }
+                ],
+                "default": {}
+             },
+             "scale": {
+                "allOf": [
+                   {
+                      "$ref": "#/definitions/Scale"
+                   }
+                ],
+                "default": {}
+             },
+             "size": {
+                "allOf": [
+                   {
+                      "$ref": "#/definitions/Size"
+                   }
+                ],
+                "default": {}
+             },
+             "transitionTime": {
+                "type": "number"
+             },
+             "waitingTime": {
+                "type": "number"
+             }
+          },
+          "type": "object"
+       },
+       "UpdateSelectionPanel": {
+          "properties": {
+             "name": {
+                "type": "string"
+             },
+             "subtitle": {
+                "type": "string"
+             }
+          },
+          "type": "object"
+       },
+       "UpdateStory": {
+          "properties": {
+             "name": {
+                "type": "string"
+             },
+             "story": {
+                "items": {
+                   "$ref": "#/definitions/StoryCoordinate"
+                },
+                "type": "array"
+             }
+          },
+          "type": "object"
+       },
+       "UpdateUserDetails": {
+          "properties": {
+             "company_name": {
+                "type": "string",
+                "x-nullable": true
+             },
+             "first_name": {
+                "type": "string"
+             },
+             "last_name": {
+                "type": "string"
+             },
+             "purpose": {
+                "type": "string"
+             },
+             "subscribed_to_newsletter": {
+                "type": "boolean"
+             },
+             "toc_accepted": {
+                "type": "boolean"
+             }
+          },
+          "type": "object"
+       },
+       "User": {
+          "properties": {
+             "_stripe_account": {
+                "maxLength": 64,
+                "type": "string",
+                "x-nullable": true
+             },
+             "company_name": {
+                "maxLength": 256,
+                "type": "string",
+                "x-nullable": true
+             },
+             "created_at": {
+                "format": "date-time",
+                "readOnly": true,
+                "type": "string"
+             },
+             "email": {
+                "maxLength": 256,
+                "readOnly": true,
+                "type": "string"
+             },
+             "first_name": {
+                "minLength": 3,
+                "type": "string"
+             },
+             "id": {
+                "readOnly": true,
+                "type": "integer"
+             },
+             "last_name": {
+                "minLength": 3,
+                "type": "string"
+             },
+             "latest_entry_date": {
+                "format": "date-time",
+                "type": "string",
+                "x-nullable": true
+             },
+             "password_date": {
+                "format": "date-time",
+                "type": "string"
+             },
+             "password_hash": {
+                "maxLength": 256,
+                "type": "string",
+                "x-nullable": true
+             },
+             "password_reset_token": {
+                "maxLength": 256,
+                "type": "string",
+                "x-nullable": true
+             },
+             "payment_error_date": {
+                "format": "date-time",
+                "type": "string",
+                "x-nullable": true
+             },
+             "purpose": {
+                "maxLength": 64,
+                "type": "string",
+                "x-nullable": true
+             },
+             "quota_extension": {
+                "x-nullable": true
+             },
+             "status": {
+                "enum": [
+                   "active",
+                   "confirmation email sent",
+                   "registration confirmed"
+                ],
+                "maxLength": 23
+             },
+             "toc_version_accepted": {
+                "type": "integer"
+             },
+             "updated_at": {
+                "format": "date-time",
+                "readOnly": true,
+                "type": "string",
+                "x-nullable": true
+             },
+             "uuid": {
+                "format": "uuid",
+                "readOnly": true,
+                "type": "string"
+             }
+          },
+          "required": [
+             "email",
+             "first_name",
+             "last_name",
+             "uuid"
+          ],
+          "type": "object"
+       },
+       "UserDetails": {
+          "properties": {
+             "company_name": {
+                "type": "string"
+             },
+             "credit_balance": {
+                "type": "integer"
+             },
+             "email": {
+                "format": "email",
+                "type": "string"
+             },
+             "first_name": {
+                "type": "string"
+             },
+             "last_name": {
+                "type": "string"
+             },
+             "max_space": {
+                "type": "integer"
+             },
+             "max_storage": {
+                "type": "integer"
+             },
+             "max_user": {
+                "type": "integer"
+             },
+             "oauth2_accounts": {
+                "items": {
+                   "$ref": "#/definitions/Provider"
+                },
+                "type": "array"
+             },
+             "owned_spaces": {
+                "items": {
+                   "$ref": "#/definitions/SpaceDetailsOnUser"
+                },
+                "type": "array"
+             },
+             "scheduled_subscription": {
+                "$ref": "#/definitions/UserScheduledSubscriptionDetails"
+             },
+             "subscribed_to_newsletter": {
+                "type": "boolean"
+             },
+             "subscription": {
+                "$ref": "#/definitions/UserSubscriptionDetails"
+             },
+             "toc_accepted": {
+                "type": "boolean"
+             },
+             "used_space": {
+                "type": "integer"
+             },
+             "used_storage": {
+                "type": "integer"
+             },
+             "used_user": {
+                "type": "integer"
+             },
+             "uuid": {
+                "format": "uuid",
+                "type": "string"
+             }
+          },
+          "type": "object"
+       },
+       "UserScheduledSubscriptionDetails": {
+          "properties": {
+             "id": {
+                "type": "string"
+             },
+             "period_end": {
+                "format": "date-time",
+                "type": "string"
+             },
+             "period_start": {
+                "format": "date-time",
+                "type": "string"
+             },
+             "products": {
+                "items": {
+                   "$ref": "#/definitions/ScheduledSubscriptionItems"
+                },
+                "type": "array"
+             }
+          },
+          "type": "object"
+       },
+       "UserSubscriptionDetails": {
+          "properties": {
+             "cancel_at_period_end": {
+                "type": "boolean"
+             },
+             "collection_method": {
+                "type": "string"
+             },
+             "id": {
+                "type": "string"
+             },
+             "period_end": {
+                "format": "date-time",
+                "type": "string"
+             },
+             "period_start": {
+                "format": "date-time",
+                "type": "string"
+             },
+             "products": {
+                "items": {
+                   "$ref": "#/definitions/NestedProduct"
+                },
+                "type": "array"
+             },
+             "status": {
+                "type": "string"
+             }
+          },
+          "type": "object"
+       },
+       "UserUpdate": {
+          "properties": {
+             "email": {
+                "format": "email",
+                "type": "string"
+             },
+             "first_name": {
+                "type": "string"
+             },
+             "is_active": {
+                "type": "boolean"
+             },
+             "last_name": {
+                "type": "string"
+             },
+             "password": {
+                "type": "string"
+             }
+          },
+          "type": "object"
+       }
+    },
+    "info": {
+       "title": "MaxWhere Swagger",
+       "version": "v0.0.1"
+    },
+    "paths": {
+       "/admin/otf_asset": {
+          "post": {
+             "description": "create otf_asset",
+             "parameters": [
+                {
+                   "in": "body",
+                   "name": "body",
+                   "required": false,
+                   "schema": {
+                      "properties": {
+                         "name": {
+                            "type": "string"
+                         }
+                      },
+                      "type": "object"
+                   }
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/OtfAsset"
+                   }
+                }
+             },
+             "tags": [
+                "otf_asset"
+             ]
+          }
+       },
+       "/admin/otf_asset/{otf_asset_uuid}": {
+          "delete": {
+             "description": "Delete OTF Asset.",
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "otf_asset_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "otf_asset"
+             ]
+          },
+          "get": {
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "otf_asset_uuid",
+                   "required": true,
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "default": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/OtfAssetExtended"
+                   }
+                }
+             }
+          },
+          "patch": {
+             "description": "Update OTF Asset metadata",
+             "parameters": [
+                {
+                   "in": "body",
+                   "name": "body",
+                   "required": false,
+                   "schema": {
+                      "$ref": "#/definitions/OtfAssetPatch"
+                   }
+                },
+                {
+                   "in": "path",
+                   "name": "otf_asset_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/OtfAsset"
+                   }
+                }
+             },
+             "tags": [
+                "otf_asset"
+             ]
+          },
+          "post": {
+             "description": "Add file to OTF Asset",
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "otf_asset_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "OTF Asset zip file",
+                   "in": "query",
+                   "name": "File",
+                   "required": true,
+                   "type": "file"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/OtfAsset"
+                   }
+                }
+             },
+             "tags": [
+                "otf_asset"
+             ]
+          }
+       },
+       "/admin/project_prototype/{project_prototype_uuid}": {
+          "delete": {
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "project_prototype_uuid",
+                   "required": true,
+                   "type": "string"
+                }
+             ],
+             "responses": {}
+          },
+          "get": {
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "project_prototype_uuid",
+                   "required": true,
+                   "type": "string"
+                }
+             ],
+             "responses": {}
+          },
+          "post": {
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "project_prototype_uuid",
+                   "required": true,
+                   "type": "string"
+                }
+             ],
+             "responses": {}
+          }
+       },
+       "/admin/space_prototype/create": {
+          "post": {
+             "description": "Create new space prototype into the db, and gitlab.",
+             "parameters": [
+                {
+                   "in": "body",
+                   "name": "body",
+                   "required": false,
+                   "schema": {
+                      "$ref": "#/definitions/SpacePrototype"
+                   }
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/SpacePrototype"
+                   }
+                }
+             },
+             "tags": [
+                "prototype"
+             ]
+          }
+       },
+       "/admin/space_prototype/{space_prototype_uuid}": {
+          "delete": {
+             "description": "Delete space prototype, if it has no active space connection.",
+             "parameters": [
+                {
+                   "in": "body",
+                   "name": "body",
+                   "required": false,
+                   "schema": {
+                      "properties": {
+                         "delete_gitlab_repo": {
+                            "type": "boolean"
+                         }
+                      },
+                      "type": "object"
+                   }
+                },
+                {
+                   "in": "path",
+                   "name": "space_prototype_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "prototype"
+             ]
+          },
+          "get": {
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "space_prototype_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/SpacePrototypeExtended"
+                   }
+                }
+             },
+             "tags": [
+                "prototype"
+             ]
+          },
+          "patch": {
+             "description": "Update existing space prototype.",
+             "parameters": [
+                {
+                   "in": "body",
+                   "name": "body",
+                   "required": false,
+                   "schema": {
+                      "properties": {
+                         "asset_pack_version": {
+                            "type": "integer",
+                            "x-nullable": true
+                         },
+                         "is_instantiatable": {
+                            "type": "boolean"
+                         },
+                         "name": {
+                            "type": "string"
+                         },
+                         "version": {
+                            "type": "integer",
+                            "x-nullable": true
+                         }
+                      },
+                      "type": "object"
+                   }
+                },
+                {
+                   "in": "path",
+                   "name": "space_prototype_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/SpacePrototype"
+                   }
+                }
+             },
+             "tags": [
+                "prototype"
+             ]
+          }
+       },
+       "/admin/space_prototype/{space_prototype_uuid}/asset_pack_current_version": {
+          "get": {
+             "description": "Retrieve list of space prototype versions",
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "space_prototype_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/SpacePrototypeAssetPackVersion"
+                   }
+                }
+             },
+             "tags": [
+                "prototype"
+             ]
+          }
+       },
+       "/admin/space_prototype/{space_prototype_uuid}/asset_pack_version": {
+          "post": {
+             "description": "Create new asset pack version for space prototype.",
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "space_prototype_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/SpacePrototypeAssetPackVersion"
+                   }
+                }
+             },
+             "tags": [
+                "prototype"
+             ]
+          }
+       },
+       "/admin/space_prototype/{space_prototype_uuid}/asset_pack_version/{version}": {
+          "delete": {
+             "description": "Delete space prototype",
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "space_prototype_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "format": "int32",
+                   "in": "path",
+                   "name": "version",
+                   "required": true,
+                   "type": "integer"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "prototype"
+             ]
+          },
+          "post": {
+             "consumes": [
+                "multipart/form-data"
+             ],
+             "description": "Create new version for space prototype asset pack, with resource file.",
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "space_prototype_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "format": "int32",
+                   "in": "path",
+                   "name": "version",
+                   "required": true,
+                   "type": "integer"
+                },
+                {
+                   "description": "File resource",
+                   "in": "query",
+                   "name": "File",
+                   "required": true,
+                   "type": "file"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "prototype"
+             ]
+          }
+       },
+       "/admin/space_prototype/{space_prototype_uuid}/otf_asset": {
+          "delete": {
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "space_prototype_uuid",
+                   "required": true,
+                   "type": "string"
+                }
+             ],
+             "responses": {}
+          },
+          "post": {
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "space_prototype_uuid",
+                   "required": true,
+                   "type": "string"
+                }
+             ],
+             "responses": {}
+          }
+       },
+       "/admin/space_prototype/{space_prototype_uuid}/project_prototype": {
+          "post": {
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "space_prototype_uuid",
+                   "required": true,
+                   "type": "string"
+                }
+             ],
+             "responses": {}
+          }
+       },
+       "/admin/space_prototype/{space_prototype_uuid}/run_pipeline": {
+          "post": {
+             "description": "Run gitlab pipeline.",
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "space_prototype_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "prototype"
+             ]
+          }
+       },
+       "/admin/space_prototype/{space_prototype_uuid}/space_prototype_version": {
+          "post": {
+             "description": "Create new version for space prototype.",
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "space_prototype_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/SpacePrototypeVersion"
+                   }
+                }
+             },
+             "tags": [
+                "prototype"
+             ]
+          }
+       },
+       "/admin/space_prototype/{space_prototype_uuid}/version/{version}": {
+          "delete": {
+             "description": "Delete space prototype",
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "space_prototype_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "format": "int32",
+                   "in": "path",
+                   "name": "version",
+                   "required": true,
+                   "type": "integer"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "prototype"
+             ]
+          },
+          "post": {
+             "consumes": [
+                "multipart/form-data"
+             ],
+             "description": "Create new version for space prototype, with resource file.",
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "space_prototype_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "format": "int32",
+                   "in": "path",
+                   "name": "version",
+                   "required": true,
+                   "type": "integer"
+                },
+                {
+                   "description": "File resource",
+                   "in": "query",
+                   "name": "File",
+                   "required": true,
+                   "type": "file"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/SpacePrototypeVersion"
+                   }
+                }
+             },
+             "tags": [
+                "prototype"
+             ]
+          }
+       },
+       "/admin/space_prototype/{space_prototype_uuid}/versions": {
+          "get": {
+             "description": "Retrieve list of space prototype versions",
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "space_prototype_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "items": {
+                         "$ref": "#/definitions/SpacePrototypeVersion"
+                      },
+                      "type": "array"
+                   }
+                }
+             },
+             "tags": [
+                "prototype"
+             ]
+          }
+       },
+       "/analytic": {
+          "get": {
+             "description": "Get daily charts.",
+             "parameters": [
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "analytic"
+             ]
+          }
+       },
+       "/auth/login": {
+          "post": {
+             "description": "Login user with email address, and password.",
+             "parameters": [
+                {
+                   "in": "body",
+                   "name": "body",
+                   "required": false,
+                   "schema": {
+                      "$ref": "#/definitions/Login"
+                   }
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/LoginReponse"
+                   }
+                }
+             },
+             "tags": [
+                "auth"
+             ]
+          }
+       },
+       "/auth/logout": {
+          "delete": {
+             "description": "Logout user.",
+             "parameters": [],
+             "responses": {},
+             "tags": [
+                "auth"
+             ]
+          }
+       },
+       "/auth/password_change": {
+          "patch": {
+             "description": "Password change, when the user knows the current one. Set all the tokens to blacklist.",
+             "parameters": [
+                {
+                   "in": "body",
+                   "name": "body",
+                   "required": false,
+                   "schema": {
+                      "$ref": "#/definitions/PasswordChange"
+                   }
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "auth"
+             ]
+          }
+       },
+       "/auth/password_change_confirm/{token}": {
+          "post": {
+             "description": "Password change with email token.",
+             "parameters": [
+                {
+                   "in": "body",
+                   "name": "body",
+                   "required": false,
+                   "schema": {
+                      "$ref": "#/definitions/PasswordChangeWithToken"
+                   }
+                },
+                {
+                   "in": "path",
+                   "name": "token",
+                   "required": true,
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/LoginReponse"
+                   }
+                }
+             },
+             "tags": [
+                "auth"
+             ]
+          }
+       },
+       "/auth/password_change_email": {
+          "post": {
+             "description": "Send password change email.",
+             "parameters": [],
+             "responses": {},
+             "tags": [
+                "auth"
+             ]
+          }
+       },
+       "/auth/profile": {
+          "delete": {
+             "description": "Delete user.",
+             "parameters": [
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "required": true,
+                   "type": "string"
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "auth"
+             ]
+          },
+          "get": {
+             "description": "Retrieve user details.",
+             "parameters": [
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "required": true,
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/UserDetails"
+                   }
+                }
+             },
+             "tags": [
+                "auth"
+             ]
+          },
+          "patch": {
+             "description": "Update user details.",
+             "parameters": [
+                {
+                   "in": "body",
+                   "name": "body",
+                   "required": false,
+                   "schema": {
+                      "$ref": "#/definitions/UpdateUserDetails"
+                   }
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "required": true,
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/UserDetails"
+                   }
+                }
+             },
+             "tags": [
+                "auth"
+             ]
+          }
+       },
+       "/auth/public_key": {
+          "get": {
+             "description": "Reveal publickey,",
+             "parameters": [],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/PublicKey"
+                   }
+                }
+             },
+             "tags": [
+                "auth"
+             ]
+          }
+       },
+       "/auth/refresh": {
+          "get": {
+             "description": "Refresh access token.",
+             "parameters": [
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/AccessToken"
+                   }
+                }
+             },
+             "tags": [
+                "auth"
+             ]
+          }
+       },
+       "/auth/registration": {
+          "post": {
+             "description": "Register new user. Send confirmation email to user email address.",
+             "parameters": [
+                {
+                   "in": "body",
+                   "name": "body",
+                   "required": false,
+                   "schema": {
+                      "$ref": "#/definitions/Registration"
+                   }
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "auth"
+             ]
+          }
+       },
+       "/auth/registration_confirm/{token}": {
+          "post": {
+             "description": "Confirm email address after registration.",
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "token",
+                   "required": true,
+                   "type": "string"
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "auth"
+             ]
+          }
+       },
+       "/auth/resend_confirmation_email": {
+          "post": {
+             "description": "Resend new user registration confirmation email",
+             "parameters": [],
+             "responses": {},
+             "tags": [
+                "auth"
+             ]
+          }
+       },
+       "/auth/send_invitation": {
+          "post": {
+             "description": "Send invitation email to the recipient",
+             "parameters": [
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "required": true,
+                   "type": "string"
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "auth"
+             ]
+          }
+       },
+       "/auth/user_status_check/{decrypted_email}": {
+          "get": {
+             "description": "Check user profile is active or not.",
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "decrypted_email",
+                   "required": true,
+                   "type": "string"
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "auth"
+             ]
+          }
+       },
+       "/auth/{provider}": {
+          "delete": {
+             "description": "Revoke oauth2 account from MW account.",
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "provider",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "required": true,
+                   "type": "string"
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "oauth"
+             ]
+          },
+          "get": {
+             "description": "Oauth2 login with provider account.",
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "provider",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "required": false,
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/Oauth2Response"
+                   }
+                }
+             },
+             "tags": [
+                "oauth"
+             ]
+          }
+       },
+       "/cancel_subscription": {
+          "delete": {
+             "description": "Cancel subscription",
+             "parameters": [
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "required": true,
+                   "type": "string"
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "payment"
+             ]
+          }
+       },
+       "/create_user": {
+          "post": {
+             "description": "Create new user.",
+             "parameters": [
+                {
+                   "in": "body",
+                   "name": "body",
+                   "required": false,
+                   "schema": {
+                      "$ref": "#/definitions/Registration"
+                   }
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "superadmin"
+             ]
+          }
+       },
+       "/database_retrieve": {
+          "get": {
+             "description": "Get database data.",
+             "parameters": [
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "analytic"
+             ]
+          }
+       },
+       "/error_messages": {
+          "get": {
+             "parameters": [],
+             "responses": {}
+          }
+       },
+       "/health": {
+          "get": {
+             "description": "Health check",
+             "parameters": [],
+             "responses": {},
+             "tags": [
+                "health"
+             ]
+          }
+       },
+       "/otf_asset/{otf_asset_uuid}": {
+          "get": {
+             "description": "Retrieve otf asset.",
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "otf_asset_uuid",
+                   "required": true,
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/OtfAsset"
+                   }
+                }
+             },
+             "tags": [
+                "otf_asset"
+             ]
+          }
+       },
+       "/otf_assets": {
+          "get": {
+             "description": "Retrieve list of otf_assets",
+             "parameters": [
+                {
+                   "in": "query",
+                   "name": "uuid",
+                   "type": "UUID"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                },
+                {
+                   "in": "query",
+                   "name": "name",
+                   "type": "string"
+                },
+                {
+                   "in": "query",
+                   "name": "space_affinity",
+                   "type": "UUID"
+                },
+                {
+                   "in": "query",
+                   "name": "description",
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "items": {
+                         "$ref": "#/definitions/OtfAsset"
+                      },
+                      "type": "array"
+                   }
+                }
+             },
+             "tags": [
+                "otf_asset"
+             ]
+          }
+       },
+       "/payment": {
+          "post": {
+             "description": "Create subscription.",
+             "parameters": [
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "required": true,
+                   "type": "string"
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "payment"
+             ]
+          }
+       },
+       "/product/{product_id}": {
+          "get": {
+             "description": "Retrieve product by id",
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "product_id",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "required": true,
+                   "type": "string"
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "payment"
+             ]
+          }
+       },
+       "/products": {
+          "get": {
+             "description": "Retrieve list of products",
+             "parameters": [
+                {
+                   "in": "query",
+                   "name": "type",
+                   "type": "string"
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "payment"
+             ]
+          }
+       },
+       "/project": {
+          "post": {
+             "description": "Create new project.",
+             "parameters": [
+                {
+                   "in": "body",
+                   "name": "body",
+                   "required": false,
+                   "schema": {
+                      "$ref": "#/definitions/ProjectSetter"
+                   }
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/ProjectDetails"
+                   }
+                }
+             },
+             "tags": [
+                "project"
+             ]
+          }
+       },
+       "/project/{project_uuid}": {
+          "delete": {
+             "description": "Delete project.",
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "project_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "project"
+             ]
+          },
+          "get": {
+             "description": "Get project details.",
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "project_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/ProjectDetails"
+                   }
+                }
+             },
+             "tags": [
+                "project"
+             ]
+          }
+          
+       },
+       "/project/{project_uuid}/clone": {
+          "post": {
+             "description": "Clone project.",
+             "parameters": [
+                {
+                   "in": "body",
+                   "name": "body",
+                   "required": false,
+                   "schema": {
+                      "properties": {
+                         "project_name": {
+                            "type": "string"
+                         }
+                      },
+                      "type": "object"
+                   }
+                },
+                {
+                   "in": "path",
+                   "name": "project_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/ProjectDetails"
+                   }
+                }
+             },
+             "tags": [
+                "project"
+             ]
+          }
+       },
+       "/project/{project_uuid}/share": {
+          "delete": {
+             "description": "Remove users from shared project.",
+             "parameters": [
+                {
+                   "in": "body",
+                   "name": "body",
+                   "required": false,
+                   "schema": {
+                      "items": {
+                         "$ref": "#/definitions/SharedWith"
+                      },
+                      "type": "array"
+                   }
+                },
+                {
+                   "in": "path",
+                   "name": "project_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "required": true,
+                   "type": "string"
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "project"
+             ]
+          },
+          "patch": {
+             "description": "Update existing project-user permission record.",
+             "parameters": [
+                {
+                   "in": "body",
+                   "name": "body",
+                   "required": false,
+                   "schema": {
+                      "items": {
+                         "$ref": "#/definitions/SharedWith"
+                      },
+                      "type": "array"
+                   }
+                },
+                {
+                   "in": "path",
+                   "name": "project_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "required": true,
+                   "type": "string"
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "project"
+             ]
+          },
+          "post": {
+             "description": "Share project with users.",
+             "parameters": [
+                {
+                   "in": "body",
+                   "name": "body",
+                   "required": false,
+                   "schema": {
+                      "items": {
+                         "$ref": "#/definitions/SharedWith"
+                      },
+                      "type": "array"
+                   }
+                },
+                {
+                   "in": "path",
+                   "name": "project_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "required": true,
+                   "type": "string"
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "project"
+             ]
+          }
+       },
+       "/projects/search": {
+          "get": {
+             "description": "Search projects.",
+             "parameters": [
+                {
+                   "in": "query",
+                   "name": "permission",
+                   "type": "string"
+                },
+                {
+                   "in": "query",
+                   "name": "page_num",
+                   "type": "int"
+                },
+                {
+                   "in": "query",
+                   "name": "order_by",
+                   "type": "string"
+                },
+                {
+                   "in": "query",
+                   "name": "domain",
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                },
+                {
+                   "in": "query",
+                   "name": "space_uuid",
+                   "type": "string"
+                },
+                {
+                   "in": "query",
+                   "name": "mobile",
+                   "type": "boolean"
+                },
+                {
+                   "in": "query",
+                   "name": "favorites",
+                   "type": "boolean"
+                },
+                {
+                   "in": "query",
+                   "name": "name",
+                   "type": "string"
+                },
+                {
+                   "in": "query",
+                   "name": "category",
+                   "type": "string"
+                },
+                {
+                   "in": "query",
+                   "name": "desc_order",
+                   "type": "boolean"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/PaginatedProjectDetails"
+                   }
+                }
+             },
+             "tags": [
+                "project"
+             ]
+          }
+       },
+       "/releases/{platform}/download": {
+          "get": {
+             "description": "Download required installer version.",
+             "parameters": [
+                {
+                   "in": "body",
+                   "name": "body",
+                   "required": false,
+                   "schema": {
+                      "$ref": "#/definitions/InstallerDownload"
+                   }
+                },
+                {
+                   "in": "path",
+                   "name": "platform",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Nanoid for installer.",
+                   "in": "query",
+                   "name": "nanoid",
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/InstallerDownloadResponse"
+                   }
+                }
+             },
+             "tags": [
+                "release"
+             ]
+          }
+       },
+       "/releases/{platform}/latestVersion": {
+          "get": {
+             "description": "Return latest installer version.",
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "platform",
+                   "required": true,
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/LatestVersion"
+                   }
+                }
+             },
+             "tags": [
+                "release"
+             ]
+          }
+       },
+       "/releases/{platform}/{version}/download": {
+          "get": {
+             "description": "Download required installer version.",
+             "parameters": [
+                {
+                   "in": "body",
+                   "name": "body",
+                   "required": false,
+                   "schema": {
+                      "$ref": "#/definitions/InstallerDownload"
+                   }
+                },
+                {
+                   "in": "path",
+                   "name": "version",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "in": "path",
+                   "name": "platform",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Nanoid for installer.",
+                   "in": "query",
+                   "name": "nanoid",
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/InstallerDownloadResponse"
+                   }
+                }
+             },
+             "tags": [
+                "release"
+             ]
+          }
+       },
+       "/selectionpanel": {
+          "post": {
+             "description": "Create selectionpanel.",
+             "parameters": [
+                {
+                   "in": "body",
+                   "name": "body",
+                   "required": false,
+                   "schema": {
+                      "$ref": "#/definitions/SelectionpanelSetter"
+                   }
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "required": true,
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "default": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/SelectionpanelSetterResponse"
+                   }
+                }
+             },
+             "tags": [
+                "selectionpanel"
+             ]
+          }
+       },
+       "/selectionpanel/{smartboard_uuid}": {
+          "delete": {
+             "description": "Delete selectionpanel.",
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "smartboard_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "selectionpanel"
+             ]
+          },
+          "get": {
+             "description": "Get selectionpanel.",
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "smartboard_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/Selectionpanel"
+                   }
+                }
+             },
+             "tags": [
+                "selectionpanel"
+             ]
+          },
+          "patch": {
+             "description": "Update selectionpanel.",
+             "parameters": [
+                {
+                   "in": "body",
+                   "name": "body",
+                   "required": false,
+                   "schema": {
+                      "$ref": "#/definitions/UpdateSelectionPanel"
+                   }
+                },
+                {
+                   "in": "path",
+                   "name": "smartboard_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/Selectionpanel"
+                   }
+                }
+             },
+             "tags": [
+                "selectionpanel"
+             ]
+          }
+       },
+       "/selectionpanel/{smartboard_uuid}/projects": {
+          "delete": {
+             "parameters": [
+                {
+                   "in": "body",
+                   "name": "body",
+                   "required": false,
+                   "schema": {
+                      "properties": {
+                         "project_uuids": {
+                            "collectionFormat": "multi",
+                            "items": {
+                               "format": "uuid",
+                               "type": "string"
+                            },
+                            "type": "array"
+                         }
+                      },
+                      "type": "object"
+                   }
+                },
+                {
+                   "in": "path",
+                   "name": "smartboard_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "required": true,
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "default": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/Selectionpanel"
+                   }
+                }
+             },
+             "tags": [
+                "selectionpanel"
+             ]
+          },
+          "post": {
+             "parameters": [
+                {
+                   "in": "body",
+                   "name": "body",
+                   "required": false,
+                   "schema": {
+                      "properties": {
+                         "project_uuids": {
+                            "collectionFormat": "multi",
+                            "items": {
+                               "format": "uuid",
+                               "type": "string"
+                            },
+                            "type": "array"
+                         }
+                      },
+                      "type": "object"
+                   }
+                },
+                {
+                   "in": "path",
+                   "name": "smartboard_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "required": true,
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "default": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/Selectionpanel"
+                   }
+                }
+             },
+             "tags": [
+                "selectionpanel"
+             ]
+          }
+       },
+       "/smartboard": {
+          "post": {
+             "description": "Create smartboard.",
+             "parameters": [
+                {
+                   "in": "body",
+                   "name": "body",
+                   "required": false,
+                   "schema": {
+                      "$ref": "#/definitions/SmartboardSetter"
+                   }
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "required": true,
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/SmartboardSetterResponse"
+                   }
+                }
+             },
+             "tags": [
+                "smartboard"
+             ]
+          }
+       },
+       "/smartboard/{smartboard_uuid}": {
+          "delete": {
+             "description": "Delete smartboard.",
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "smartboard_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "smartboard"
+             ]
+          },
+          "get": {
+             "description": "Get content of smartboard.",
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "smartboard_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "smartboard"
+             ]
+          },
+          "patch": {
+             "description": "Update client type of the smartboards.",
+             "parameters": [
+                {
+                   "in": "body",
+                   "name": "body",
+                   "required": false,
+                   "schema": {
+                      "$ref": "#/definitions/SmartboardUpdate"
+                   }
+                },
+                {
+                   "in": "path",
+                   "name": "smartboard_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/Smartboard"
+                   }
+                }
+             },
+             "tags": [
+                "smartboard"
+             ]
+          }
+       },
+       "/smartboard/{smartboard_uuid}/clone": {
+          "post": {
+             "description": "Clone smartboard to another project.",
+             "parameters": [
+                {
+                   "in": "body",
+                   "name": "body",
+                   "required": false,
+                   "schema": {
+                      "properties": {
+                         "project_uuid": {
+                            "format": "uuid",
+                            "type": "string"
+                         }
+                      },
+                      "type": "object"
+                   }
+                },
+                {
+                   "in": "path",
+                   "name": "smartboard_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/Smartboard"
+                   }
+                }
+             },
+             "tags": [
+                "smartboard"
+             ]
+          }
+       },
+       "/smartboard/{smartboard_uuid}/move": {
+          "patch": {
+             "description": "Move smartboard to another project.",
+             "parameters": [
+                {
+                   "in": "body",
+                   "name": "body",
+                   "required": false,
+                   "schema": {
+                      "properties": {
+                         "project_uuid": {
+                            "format": "uuid",
+                            "type": "string"
+                         }
+                      },
+                      "type": "object"
+                   }
+                },
+                {
+                   "in": "path",
+                   "name": "smartboard_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "smartboard"
+             ]
+          }
+       },
+       "/smartboard/{smartboard_uuid}/placeholder": {
+          "patch": {
+             "description": "Update position of the smartboards.",
+             "parameters": [
+                {
+                   "in": "body",
+                   "name": "body",
+                   "required": false,
+                   "schema": {
+                      "$ref": "#/definitions/Placeholder"
+                   }
+                },
+                {
+                   "in": "path",
+                   "name": "smartboard_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/Smartboard"
+                   }
+                }
+             },
+             "tags": [
+                "smartboard"
+             ]
+          }
+       },
+       "/space": {
+          "post": {
+             "description": "Create new space. If prototype_uuid set than new sandbox will be created, if sandbox_space_uuid than new space based on the sandbox space.",
+             "parameters": [
+                {
+                   "in": "body",
+                   "name": "body",
+                   "required": false,
+                   "schema": {
+                      "$ref": "#/definitions/CreateSpace"
+                   }
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/Space"
+                   }
+                }
+             },
+             "tags": [
+                "space"
+             ]
+          }
+       },
+       "/space/{space_uuid}": {
+          "delete": {
+             "description": "Delete space.",
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "space_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "space"
+             ]
+          },
+          "get": {
+             "description": "Retrieve space basic details.",
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "space_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/SpaceDetails"
+                   }
+                }
+             },
+             "tags": [
+                "space"
+             ]
+          },
+          "patch": {
+             "description": "Update space metadata.",
+             "parameters": [
+                {
+                   "in": "body",
+                   "name": "body",
+                   "required": false,
+                   "schema": {
+                      "$ref": "#/definitions/CreateSpace"
+                   }
+                },
+                {
+                   "in": "path",
+                   "name": "space_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/Space"
+                   }
+                },
+                "207": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/Space"
+                   }
+                }
+             },
+             "tags": [
+                "space"
+             ]
+          }
+       },
+       "/space/{space_uuid}/details": {
+          "get": {
+             "description": "Retrieve space with extended details, and create sandbox project if the space is sandbox.",
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "space_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "in": "query",
+                   "name": "action",
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/SpaceDetailsExtended"
+                   }
+                }
+             },
+             "tags": [
+                "space"
+             ]
+          }
+       },
+       "/space/{space_uuid}/download": {
+          "get": {
+             "description": "Get space resource url.",
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "space_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Requider version of the space prototype.",
+                   "in": "query",
+                   "name": "Version",
+                   "type": "int"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/SpaceDownload"
+                   }
+                }
+             },
+             "tags": [
+                "space"
+             ]
+          }
+       },
+       "/space/{space_uuid}/favorite": {
+          "delete": {
+             "description": "Remove space as favorite.",
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "space_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "required": true,
+                   "type": "string"
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "space"
+             ]
+          },
+          "post": {
+             "description": "Set space as favorite.",
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "space_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "required": true,
+                   "type": "string"
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "space"
+             ]
+          }
+       },
+       "/space/{space_uuid}/limit": {
+          "get": {
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "space_uuid",
+                   "required": true,
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "default": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/SpaceLimit"
+                   }
+                }
+             }
+          }
+       },
+       "/space/{space_uuid}/share": {
+          "delete": {
+             "description": "Remove user from shared space.",
+             "parameters": [
+                {
+                   "in": "body",
+                   "name": "body",
+                   "required": false,
+                   "schema": {
+                      "items": {
+                         "$ref": "#/definitions/SharedWith"
+                      },
+                      "type": "array"
+                   }
+                },
+                {
+                   "in": "path",
+                   "name": "space_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "required": true,
+                   "type": "string"
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "space"
+             ]
+          },
+          "patch": {
+             "description": "Update existing space-user permission record.",
+             "parameters": [
+                {
+                   "in": "body",
+                   "name": "body",
+                   "required": false,
+                   "schema": {
+                      "items": {
+                         "$ref": "#/definitions/SharedWith"
+                      },
+                      "type": "array"
+                   }
+                },
+                {
+                   "in": "path",
+                   "name": "space_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "required": true,
+                   "type": "string"
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "space"
+             ]
+          },
+          "post": {
+             "description": "Share space with user.",
+             "parameters": [
+                {
+                   "in": "body",
+                   "name": "body",
+                   "required": false,
+                   "schema": {
+                      "items": {
+                         "$ref": "#/definitions/SharedWith"
+                      },
+                      "type": "array"
+                   }
+                },
+                {
+                   "in": "path",
+                   "name": "space_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "required": true,
+                   "type": "string"
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "space"
+             ]
+          }
+       },
+       "/space/{space_uuid}/storage": {
+          "get": {
+             "description": "Get space free storage (in byte).",
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "space_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "required": "true",
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/SpaceStorage"
+                   }
+                }
+             },
+             "tags": [
+                "space"
+             ]
+          }
+       },
+       "/space/{space_uuid}/story": {
+          "get": {
+             "description": "Retrieve space's stories.",
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "space_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "items": {
+                         "$ref": "#/definitions/Story"
+                      },
+                      "type": "array"
+                   }
+                }
+             },
+             "tags": [
+                "story"
+             ]
+          },
+          "post": {
+             "description": "Set space's stories.",
+             "parameters": [
+                {
+                   "in": "body",
+                   "name": "body",
+                   "required": false,
+                   "schema": {
+                      "$ref": "#/definitions/Story"
+                   }
+                },
+                {
+                   "in": "path",
+                   "name": "space_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/Story"
+                   }
+                }
+             },
+             "tags": [
+                "story"
+             ]
+          }
+       },
+       "/space/{space_uuid}/thumbnail": {
+          "patch": {
+             "consumes": [
+                "multipart/form-data"
+             ],
+             "description": "Upload thumbnail for space.",
+             "parameters": [
+                {
+                   "in": "formData",
+                   "name": "file",
+                   "required": true,
+                   "type": "file"
+                },
+                {
+                   "in": "path",
+                   "name": "space_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "required": true,
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/SpaceDetails"
+                   }
+                }
+             },
+             "tags": [
+                "space"
+             ]
+          }
+       },
+       "/spaces": {
+          "post": {
+             "description": "Filter list of spaces.",
+             "parameters": [
+                {
+                   "in": "body",
+                   "name": "body",
+                   "required": false,
+                   "schema": {
+                      "$ref": "#/definitions/ListOfSpacesSchemaKwargs"
+                   }
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/PaginatedSpace"
+                   }
+                }
+             },
+             "tags": [
+                "space"
+             ]
+          }
+       },
+       "/spaces/search": {
+          "get": {
+             "description": "Search spaces",
+             "parameters": [
+                {
+                   "in": "query",
+                   "name": "permission",
+                   "type": "string"
+                },
+                {
+                   "in": "query",
+                   "name": "page_num",
+                   "type": "int"
+                },
+                {
+                   "in": "query",
+                   "name": "created_spaces",
+                   "type": "boolean"
+                },
+                {
+                   "in": "query",
+                   "name": "order_by",
+                   "type": "string"
+                },
+                {
+                   "in": "query",
+                   "name": "sandbox",
+                   "type": "boolean"
+                },
+                {
+                   "in": "query",
+                   "name": "status",
+                   "type": "string"
+                },
+                {
+                   "in": "query",
+                   "name": "domain",
+                   "type": "string"
+                },
+                {
+                   "in": "query",
+                   "name": "uuid",
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                },
+                {
+                   "in": "query",
+                   "name": "mobile",
+                   "type": "boolean"
+                },
+                {
+                   "in": "query",
+                   "name": "favorites",
+                   "type": "boolean"
+                },
+                {
+                   "in": "query",
+                   "name": "last_opened",
+                   "type": "boolean"
+                },
+                {
+                   "in": "query",
+                   "name": "name",
+                   "type": "string"
+                },
+                {
+                   "in": "query",
+                   "name": "category",
+                   "type": "string"
+                },
+                {
+                   "in": "query",
+                   "name": "desc_order",
+                   "type": "boolean"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/PaginatedSpace"
+                   }
+                }
+             },
+             "tags": [
+                "space"
+             ]
+          }
+       },
+       "/stained_installer": {
+          "post": {
+             "description": "Generate new stained installer by space uuid.",
+             "parameters": [
+                {
+                   "in": "body",
+                   "name": "body",
+                   "required": false,
+                   "schema": {
+                      "properties": {
+                         "space_uuid": {
+                            "format": "uuid",
+                            "type": "string"
+                         }
+                      },
+                      "type": "object"
+                   }
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "required": "true",
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/InstallerStain"
+                   }
+                }
+             },
+             "tags": [
+                "stained_installer"
+             ]
+          }
+       },
+       "/stained_installer/{nanoid}": {
+          "delete": {
+             "description": "Maintain stained installer.",
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "nanoid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "required": "true",
+                   "type": "string"
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "stained_installer"
+             ]
+          },
+          "get": {
+             "description": "Maintain stained installer.",
+             "parameters": [
+                {
+                   "in": "body",
+                   "name": "body",
+                   "required": false,
+                   "schema": {
+                      "properties": {
+                         "nanoid": {
+                            "type": "string"
+                         }
+                      },
+                      "type": "object"
+                   }
+                },
+                {
+                   "in": "path",
+                   "name": "nanoid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "required": "true",
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/InstallerStainResponse"
+                   }
+                }
+             },
+             "tags": [
+                "stained_installer"
+             ]
+          }
+       },
+       "/story/{story_uuid}": {
+          "delete": {
+             "description": "Delete space's stories.",
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "story_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "required": true,
+                   "type": "string"
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "story"
+             ]
+          },
+          "patch": {
+             "description": "Update space's stories.",
+             "parameters": [
+                {
+                   "in": "body",
+                   "name": "body",
+                   "required": false,
+                   "schema": {
+                      "$ref": "#/definitions/UpdateStory"
+                   }
+                },
+                {
+                   "in": "path",
+                   "name": "story_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "required": true,
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/Story"
+                   }
+                }
+             },
+             "tags": [
+                "story"
+             ]
+          }
+       },
+       "/stripe_user_page": {
+          "get": {
+             "description": "User's stripe account page.",
+             "parameters": [
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "required": true,
+                   "type": "string"
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "payment"
+             ]
+          }
+       },
+       "/subscription_check": {
+          "get": {
+             "description": "Check subscription and set spaces to active or to suspended.",
+             "parameters": [
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "required": true,
+                   "type": "string"
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "payment"
+             ]
+          }
+       },
+       "/update_subscription": {
+          "patch": {
+             "description": "Update subscription",
+             "parameters": [
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "required": true,
+                   "type": "string"
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "payment"
+             ]
+          }
+       },
+       "/user/{user_uuid}": {
+          "delete": {
+             "description": "Delete user.",
+             "parameters": [
+                {
+                   "in": "path",
+                   "name": "user_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "superadmin"
+             ]
+          },
+          "patch": {
+             "description": "Update user metadata.",
+             "parameters": [
+                {
+                   "in": "body",
+                   "name": "body",
+                   "required": false,
+                   "schema": {
+                      "$ref": "#/definitions/UserUpdate"
+                   }
+                },
+                {
+                   "in": "path",
+                   "name": "user_uuid",
+                   "required": true,
+                   "type": "string"
+                },
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "type": "string"
+                }
+             ],
+             "responses": {
+                "default": {
+                   "description": "",
+                   "schema": {
+                      "$ref": "#/definitions/User"
+                   }
+                }
+             },
+             "tags": [
+                "superadmin"
+             ]
+          }
+       },
+       "/user_purchase": {
+          "get": {
+             "description": "Get user purchases.",
+             "parameters": [
+                {
+                   "description": "Authorization HTTP header with JWT access token.",
+                   "in": "header",
+                   "name": "Authorization",
+                   "required": true,
+                   "type": "string"
+                }
+             ],
+             "responses": {},
+             "tags": [
+                "payment"
+             ]
+          }
+       },
+       "/webhook": {
+          "post": {
+             "description": "Stripe webhook endpoint.",
+             "parameters": [],
+             "responses": {},
+             "tags": [
+                "payment"
+             ]
+          }
+       }
+    },
+    "swagger": "2.0"
+ }
