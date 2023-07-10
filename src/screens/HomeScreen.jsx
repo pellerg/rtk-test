@@ -20,9 +20,9 @@ const HomeScreen = () => {
   // const {data: allSpaces, isSuccess: allSpacesSuccess} = spaceApi.useGetSpacesQuery("", {skip})
   // const {data: educationSpaces, isSuccess: educationSpacesSuccess} = spaceApi.useGetEducationSpacesQuery("", {skip})
   const {
-    data: searchSpaces,
-    isLoading: isSearchSpacesLoading,
-    isSuccess: isSearchSpacesSuccess,
+    data: demoSpaces,
+    isLoading: isDemoSpacesLoading,
+    isSuccess: isDemoSpacesSuccess,
   } = mwQueries.useGetSandboxSpacesQuery({}, { skip });
 
   const {
@@ -31,12 +31,10 @@ const HomeScreen = () => {
     isSuccess: isEducationSpacesSuccess,
   } = mwQueries.useGetEducationSpacesQuery({}, { skip });
 
-
-
-    const [setToFavorite, { result, isLoading: isPostSpaceFavoriteLoading}] =
+  const [setToFavorite, { result, isLoading: isPostSpaceFavoriteLoading }] =
     mwQueries.usePostSpaceBySpaceUuidFavoriteMutation();
 
-  const [removeFavorite, {isLoading:isDeleteSpaceFavoriteLoading}] =
+  const [removeFavorite, { isLoading: isDeleteSpaceFavoriteLoading }] =
     mwQueries.useDeleteSpaceBySpaceUuidFavoriteMutation();
 
   const buttonClick = (space) => {
@@ -53,10 +51,9 @@ const HomeScreen = () => {
     setSkip(!isLoggedIn);
   }, [isLoggedIn]);
 
-
   return (
     <div className="home-screen">
-      <h1>{isLoggedIn?"Spaces:":"Please log in to Browse spaces!"}</h1>
+      <h1>{isLoggedIn ? "Spaces:" : "Log in to Browse Spaces!"}</h1>
       {isLoggedIn && (
         <div className="sandboxSpaces">
           <div>
@@ -64,13 +61,16 @@ const HomeScreen = () => {
               <strong>Demo spaces:</strong>
             </span>
           </div>
-          {isSearchSpacesSuccess &&
-            searchSpaces?.items.map((space) => (
+          {isDemoSpacesSuccess &&
+            demoSpaces?.items.map((space) => (
               <React.Fragment key={space.uuid}>
                 {space && (
                   <React.Fragment>
                     <span>{space.name}</span>
-                    <button className={`favorite-button ${space.is_favorite ? "favorite":""} ${isPostSpaceFavoriteLoading?"":""}`}
+                    <button
+                      className={`favorite-button ${
+                        space.is_favorite ? "favorite" : ""
+                      } ${isPostSpaceFavoriteLoading ? "" : ""}`}
                       onClick={() => {
                         buttonClick(space);
                       }}
@@ -97,7 +97,10 @@ const HomeScreen = () => {
                 {space && (
                   <React.Fragment>
                     <span>{space.name}</span>
-                    <button className={`favorite-button ${space.is_favorite ? "favorite":""} ${isPostSpaceFavoriteLoading?"":""}`}
+                    <button
+                      className={`favorite-button ${
+                        space.is_favorite ? "favorite" : ""
+                      } ${isPostSpaceFavoriteLoading ? "" : ""}`}
                       onClick={() => {
                         buttonClick(space);
                       }}

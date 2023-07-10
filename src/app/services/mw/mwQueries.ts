@@ -1,6 +1,4 @@
 import { mwApi as api } from "../mwApi";
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-
 
 const mwQueries = api.injectEndpoints({
   endpoints: (build) => ({
