@@ -8,8 +8,9 @@ const baseUrl =
 
 
 export const mwApi = createApi({
+  tagTypes: ["SandboxSpaces"],
   baseQuery: fetchBaseQuery({
-    baseUrl,
+    baseUrl,    
     prepareHeaders: (headers, { getState }) => {
       const token = getState().auth.userToken
       if (token) {

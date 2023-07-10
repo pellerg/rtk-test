@@ -805,6 +805,7 @@ const mwQueries = api.injectEndpoints({
         method: "DELETE",
         headers: { Authorization: queryArg.authorization },
       }),
+      invalidatesTags:["SandboxSpaces"]
     }),
     postSpaceBySpaceUuidFavorite: build.mutation<
       PostSpaceBySpaceUuidFavoriteApiResponse,
@@ -815,6 +816,7 @@ const mwQueries = api.injectEndpoints({
         method: "POST",
         headers: { Authorization: queryArg.authorization },
       }),
+      invalidatesTags:["SandboxSpaces"]
     }),
     getSpaceBySpaceUuidLimit: build.query<
       GetSpaceBySpaceUuidLimitApiResponse,
@@ -928,6 +930,32 @@ const mwQueries = api.injectEndpoints({
         },
       }),
     }),
+    getSandboxSpaces: build.query<
+    GetSpacesSearchApiResponse,
+    GetSpacesSearchApiArg
+  >({
+    query: (queryArg) => ({
+      url: `/spaces/search?sandbox=true`,
+      headers: { Authorization: queryArg.authorization },
+      params: {
+        permission: queryArg.permission,
+        page_num: queryArg.pageNum,
+        created_spaces: queryArg.createdSpaces,
+        order_by: queryArg.orderBy,
+        sandbox: queryArg.sandbox,
+        status: queryArg.status,
+        domain: queryArg.domain,
+        uuid: queryArg.uuid,
+        mobile: queryArg.mobile,
+        favorites: queryArg.favorites,
+        last_opened: queryArg.lastOpened,
+        name: queryArg.name,
+        category: queryArg.category,
+        desc_order: queryArg.descOrder,
+      },
+    }),
+    providesTags:["SandboxSpaces"]
+  }),
     postStainedInstaller: build.mutation<
       PostStainedInstallerApiResponse,
       PostStainedInstallerApiArg
@@ -2437,4 +2465,5 @@ export const {
   usePatchUserByUserUuidMutation,
   useGetUserPurchaseQuery,
   usePostWebhookMutation,
+  useGetSandboxSpacesQuery
 } = mwQueries;

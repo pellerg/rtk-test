@@ -121,4 +121,21 @@ form button {
   flex-direction: column;
  }
 
+ .loading-btn{
+  color: #16b8f3;
+ }
+
+ .default-btn{
+  color: black
+ }
+
+ .favorite-btn{
+  color: red
+ }
+
+ .loading-btn{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+ }
 
