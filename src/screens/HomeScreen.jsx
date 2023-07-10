@@ -24,6 +24,15 @@ const HomeScreen = () => {
     isLoading: isSearchSpacesLoading,
     isSuccess: isSearchSpacesSuccess,
   } = mwQueries.useGetSandboxSpacesQuery({}, { skip });
+
+  const {
+    data: educationSpaces,
+    isLoading: isEducationSpacesLoading,
+    isSuccess: isEducationSpacesSuccess,
+  } = mwQueries.useGetEducationSpacesQuery({}, { skip });
+
+
+
     const [setToFavorite, { result, isLoading: isPostSpaceFavoriteLoading}] =
     mwQueries.usePostSpaceBySpaceUuidFavoriteMutation();
 
@@ -47,12 +56,12 @@ const HomeScreen = () => {
 
   return (
     <div className="home-screen">
-      <h1>User Authentication with Redux Toolkit & JWTs</h1>
+      <h1>{isLoggedIn?"Spaces:":"Please log in to Browse spaces!"}</h1>
       {isLoggedIn && (
         <div className="sandboxSpaces">
           <div>
             <span>
-              <strong>Search spaces:</strong>
+              <strong>Demo spaces:</strong>
             </span>
           </div>
           {isSearchSpacesSuccess &&
@@ -61,7 +70,34 @@ const HomeScreen = () => {
                 {space && (
                   <React.Fragment>
                     <span>{space.name}</span>
-                    <button className={`${space.is_favorite ? "favorite-btn":"default-btn"} ${isPostSpaceFavoriteLoading?"":""}`}
+                    <button className={`favorite-button ${space.is_favorite ? "favorite":""} ${isPostSpaceFavoriteLoading?"":""}`}
+                      onClick={() => {
+                        buttonClick(space);
+                      }}
+                    >
+                      {space.is_favorite ? "Favorite" : "Not favorite"}
+                    </button>
+                    <br />
+                  </React.Fragment>
+                )}
+              </React.Fragment>
+            ))}
+        </div>
+      )}
+      {isLoggedIn && (
+        <div className="sandboxSpaces">
+          <div>
+            <span>
+              <strong>Education spaces:</strong>
+            </span>
+          </div>
+          {isEducationSpacesSuccess &&
+            educationSpaces?.items.map((space) => (
+              <React.Fragment key={space.uuid}>
+                {space && (
+                  <React.Fragment>
+                    <span>{space.name}</span>
+                    <button className={`favorite-button ${space.is_favorite ? "favorite":""} ${isPostSpaceFavoriteLoading?"":""}`}
                       onClick={() => {
                         buttonClick(space);
                       }}

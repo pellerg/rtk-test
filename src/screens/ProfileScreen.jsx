@@ -65,7 +65,7 @@ const ProfileScreen = () => {
                 {space && (
                   <React.Fragment>
                     <span>{space.name}</span>
-                    <button className={`${space.is_favorite ? "favorite-btn":"default-btn"} ${isPostSpaceFavoriteLoading?"":""}`}
+                    <button className={`favorite-button ${space.is_favorite ? "favorite":""} ${isPostSpaceFavoriteLoading?"":""}`}
                       onClick={() => {
                         buttonClick(space);
                       }}

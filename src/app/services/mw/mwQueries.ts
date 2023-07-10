@@ -805,7 +805,7 @@ const mwQueries = api.injectEndpoints({
         method: "DELETE",
         headers: { Authorization: queryArg.authorization },
       }),
-      invalidatesTags:["SandboxSpaces"]
+      invalidatesTags:["SandboxSpaces", "EducationSpaces"]
     }),
     postSpaceBySpaceUuidFavorite: build.mutation<
       PostSpaceBySpaceUuidFavoriteApiResponse,
@@ -816,7 +816,7 @@ const mwQueries = api.injectEndpoints({
         method: "POST",
         headers: { Authorization: queryArg.authorization },
       }),
-      invalidatesTags:["SandboxSpaces"]
+      invalidatesTags:["SandboxSpaces", "EducationSpaces"]
     }),
     getSpaceBySpaceUuidLimit: build.query<
       GetSpaceBySpaceUuidLimitApiResponse,
@@ -956,6 +956,32 @@ const mwQueries = api.injectEndpoints({
     }),
     providesTags:["SandboxSpaces"]
   }),
+  getEducationSpaces: build.query<
+  GetSpacesSearchApiResponse,
+  GetSpacesSearchApiArg
+>({
+  query: (queryArg) => ({
+    url: `/spaces/search?category=education`,
+    headers: { Authorization: queryArg.authorization },
+    params: {
+      permission: queryArg.permission,
+      page_num: queryArg.pageNum,
+      created_spaces: queryArg.createdSpaces,
+      order_by: queryArg.orderBy,
+      sandbox: queryArg.sandbox,
+      status: queryArg.status,
+      domain: queryArg.domain,
+      uuid: queryArg.uuid,
+      mobile: queryArg.mobile,
+      favorites: queryArg.favorites,
+      last_opened: queryArg.lastOpened,
+      name: queryArg.name,
+      category: queryArg.category,
+      desc_order: queryArg.descOrder,
+    },
+  }),
+  providesTags:["EducationSpaces"]
+}),
     postStainedInstaller: build.mutation<
       PostStainedInstallerApiResponse,
       PostStainedInstallerApiArg
@@ -2465,5 +2491,6 @@ export const {
   usePatchUserByUserUuidMutation,
   useGetUserPurchaseQuery,
   usePostWebhookMutation,
-  useGetSandboxSpacesQuery
+  useGetSandboxSpacesQuery,
+  useGetEducationSpacesQuery
 } = mwQueries;

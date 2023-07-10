@@ -8,7 +8,7 @@ const baseUrl =
 
 
 export const mwApi = createApi({
-  tagTypes: ["SandboxSpaces"],
+  tagTypes: ["SandboxSpaces", "EducationSpaces"],
   baseQuery: fetchBaseQuery({
     baseUrl,    
     prepareHeaders: (headers, { getState }) => {
