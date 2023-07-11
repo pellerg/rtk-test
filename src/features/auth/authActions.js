@@ -1,62 +1,70 @@
-import axios from 'axios'
-import { createAsyncThunk } from '@reduxjs/toolkit'
+import axios from "axios";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
-const backendURL =
-  "https://devapi.maxwhere.com"
+const backendURL = "https://devapi.maxwhere.com";
 
 export const userLogin = createAsyncThunk(
-  'auth/login',
+  "auth/login",
   async ({ email, password }, { rejectWithValue }) => {
     try {
       // configure header's Content-Type as JSON
       const config = {
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-      }
+      };
 
       const { data } = await axios.post(
         `${backendURL}/auth/login`,
         { email, password },
         config
-      )
+      );
 
       // store user's token in local storage
-      localStorage.setItem('userToken', data.access_token)
+      localStorage.setItem("access_token", data.access_token);
+      console.log("Login - access token: " + data.access_token);
 
-      return data
+      return data;
     } catch (error) {
       // return custom error message from API if any
       if (error.response && error.response.data.message) {
-        return rejectWithValue(error.response.data.message)
+        return rejectWithValue(error.response.data.message);
       } else {
-        return rejectWithValue(error.message)
+        return rejectWithValue(error.message);
       }
     }
   }
-)
+);
 
-export const registerUser = createAsyncThunk(
-  'auth/register',
-  async ({ firstName, email, password }, { rejectWithValue }) => {
+export const refreshJWTToken = createAsyncThunk(
+  "auth/refresh",
+  async (refresh_token, { rejectWithValue }) => {
     try {
+      // configure headers
       const config = {
         headers: {
-          'Content-Type': 'application/json',
+          Authorization: `Bearer ${refresh_token}`,
         },
-      }
+      };
 
-      await axios.post(
-        `${backendURL}/auth/register`,
-        { firstName, email, password },
-        config
-      )
+      const { data } = await axios.get(`${backendURL}/auth/refresh`, config);
+
+      console.log("refresh token data: ");
+      console.log(data);
+      // store user's token in local storage
+      localStorage.setItem("access_token", data.access_token);
+      console.log("Login - access token: " + data.access_token);
+
+      return data;
     } catch (error) {
+      console.log("refreshJWTToken error van:");
+      console.log(error);
+      // return custom error message from API if any
       if (error.response && error.response.data.message) {
-        return rejectWithValue(error.response.data.message)
+        return rejectWithValue(error.response.data.message);
       } else {
-        return rejectWithValue(error.message)
+        return rejectWithValue(error.message);
       }
     }
   }
-)
+);

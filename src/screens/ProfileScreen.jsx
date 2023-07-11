@@ -11,7 +11,7 @@ const ProfileScreen = () => {
   const { isLoggedIn } = useSelector((state) => state.auth);
 
   const {
-    data: semoSpaces,
+    data: demoSpaces,
     isLoading: isDemoSpacesLoading,
     isSuccess: isDemoSpacesSuccess,
   } = mwQueries.useGetSandboxSpacesQuery({}, { skip });
@@ -40,6 +40,11 @@ const ProfileScreen = () => {
     console.log(userInfo)
   }, [userInfo])
 
+  useEffect(()=>{
+    console.log("sandboxSpaces:")
+    console.log(demoSpaces)
+  }, [demoSpaces])
+
 
   return (
     <div>
@@ -59,8 +64,8 @@ const ProfileScreen = () => {
               <strong>Search spaces:</strong>
             </span>
           </div>
-          {isDemoSpacesSuccess &&
-            semoSpaces?.items.map((space) => (
+          {isDemoSpacesSuccess && demoSpaces &&
+            demoSpaces?.items.map((space) => (
               <React.Fragment key={space.uuid}>
                 {space && (
                   <React.Fragment>

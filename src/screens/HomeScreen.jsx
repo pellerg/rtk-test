@@ -7,18 +7,6 @@ const HomeScreen = () => {
   const [skip, setSkip] = React.useState(true);
   const { isLoggedIn } = useSelector((state) => state.auth);
 
-  // const {
-  //   data: sandboxSpaces,
-  //   isLoading,
-  //   isFetching,
-  //   isSuccess: isSandboxSpacesSuccess,
-  //   isUninitialized,
-  // } = spaceApi.useGetSandboxSpacesQuery("", {
-  //   skip,
-  // });
-
-  // const {data: allSpaces, isSuccess: allSpacesSuccess} = spaceApi.useGetSpacesQuery("", {skip})
-  // const {data: educationSpaces, isSuccess: educationSpacesSuccess} = spaceApi.useGetEducationSpacesQuery("", {skip})
   const {
     data: demoSpaces,
     isLoading: isDemoSpacesLoading,
@@ -30,6 +18,12 @@ const HomeScreen = () => {
     isLoading: isEducationSpacesLoading,
     isSuccess: isEducationSpacesSuccess,
   } = mwQueries.useGetEducationSpacesQuery({}, { skip });
+
+  const {
+    data: eventSpaces,
+    isLoading: isEventSpacesLoading,
+    isSuccess: isEventSpacesSuccess,
+  } = mwQueries.useGetEventSpacesQuery({}, { skip });
 
   const [setToFavorite, { result, isLoading: isPostSpaceFavoriteLoading }] =
     mwQueries.usePostSpaceBySpaceUuidFavoriteMutation();
@@ -63,6 +57,36 @@ const HomeScreen = () => {
           </div>
           {isDemoSpacesSuccess &&
             demoSpaces?.items.map((space) => (
+              <React.Fragment key={space.uuid}>
+                {space && (
+                  <React.Fragment>
+                    <span>{space.name}</span>
+                    <button
+                      className={`favorite-button ${
+                        space.is_favorite ? "favorite" : ""
+                      } ${isPostSpaceFavoriteLoading ? "" : ""}`}
+                      onClick={() => {
+                        buttonClick(space);
+                      }}
+                    >
+                      {space.is_favorite ? "Favorite" : "Not favorite"}
+                    </button>
+                    <br />
+                  </React.Fragment>
+                )}
+              </React.Fragment>
+            ))}
+        </div>
+      )}
+      {isLoggedIn && (
+        <div className="sandboxSpaces">
+          <div>
+            <span>
+              <strong>Event spaces:</strong>
+            </span>
+          </div>
+          {isEventSpacesSuccess &&
+            eventSpaces?.items.map((space) => (
               <React.Fragment key={space.uuid}>
                 {space && (
                   <React.Fragment>

@@ -1,23 +1,21 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
 
-// initialize userToken from local storage
-const userToken = localStorage.getItem('userToken')
-  ? localStorage.getItem('userToken')
-  : null
+// initialize access_token from local storage
+const access_token = localStorage.getItem("access_token")
+  ? localStorage.getItem("access_token")
+  : null;
 
 const initialState = {
   sandboxSpaces: null,
-  userToken,
-}
+  access_token,
+};
 
 const authSlice = createSlice({
-  name: 'space',
+  name: "space",
   initialState,
-  reducers: {    
-    
-}
-})
+  reducers: {},
+});
 
-export const { logout, setCredentials } = authSlice.actions
+export const { logout, setCredentials } = authSlice.actions;
 
-export default authSlice.reducer
+export default authSlice.reducer;

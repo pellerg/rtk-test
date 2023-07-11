@@ -8,11 +8,11 @@ const baseUrl =
 
 
 export const mwApi = createApi({
-  tagTypes: ["SandboxSpaces", "EducationSpaces"],
+  tagTypes: ["Space"],
   baseQuery: fetchBaseQuery({
     baseUrl,    
     prepareHeaders: (headers, { getState }) => {
-      const token = getState().auth.userToken
+      const token = getState().auth.access_token
       if (token) {
         headers.set('authorization', `Bearer ${token}`)
         return headers

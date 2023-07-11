@@ -329,15 +329,15 @@ const mwQueries = api.injectEndpoints({
     >({
       query: () => ({ url: `/auth/public_key` }),
     }),
-    getAuthRefresh: build.query<
-      GetAuthRefreshApiResponse,
-      GetAuthRefreshApiArg
-    >({
-      query: (queryArg) => ({
-        url: `/auth/refresh`,
-        headers: { Authorization: queryArg.authorization },
-      }),
-    }),
+    // getAuthRefresh: build.query<
+    //   GetAuthRefreshApiResponse,
+    //   GetAuthRefreshApiArg
+    // >({
+    //   query: (queryArg) => ({
+    //     url: `/auth/refresh`,
+    //     headers: { Authorization: queryArg.authorization },
+    //   }),
+    // }),
     postAuthRegistration: build.mutation<
       PostAuthRegistrationApiResponse,
       PostAuthRegistrationApiArg
@@ -803,7 +803,9 @@ const mwQueries = api.injectEndpoints({
         method: "DELETE",
         headers: { Authorization: queryArg.authorization },
       }),
-      invalidatesTags:["SandboxSpaces", "EducationSpaces"]
+      invalidatesTags: (result, error, arg) => [
+        { type: "Space", id: arg.spaceUuid },
+      ],
     }),
     postSpaceBySpaceUuidFavorite: build.mutation<
       PostSpaceBySpaceUuidFavoriteApiResponse,
@@ -814,7 +816,9 @@ const mwQueries = api.injectEndpoints({
         method: "POST",
         headers: { Authorization: queryArg.authorization },
       }),
-      invalidatesTags:["SandboxSpaces", "EducationSpaces"]
+      invalidatesTags: (result, error, arg) => [
+        { type: "Space", id: arg.spaceUuid },
+      ],
     }),
     getSpaceBySpaceUuidLimit: build.query<
       GetSpaceBySpaceUuidLimitApiResponse,
@@ -929,57 +933,116 @@ const mwQueries = api.injectEndpoints({
       }),
     }),
     getSandboxSpaces: build.query<
-    GetSpacesSearchApiResponse,
-    GetSpacesSearchApiArg
-  >({
-    query: (queryArg) => ({
-      url: `/spaces/search?sandbox=true`,
-      headers: { Authorization: queryArg.authorization },
-      params: {
-        permission: queryArg.permission,
-        page_num: queryArg.pageNum,
-        created_spaces: queryArg.createdSpaces,
-        order_by: queryArg.orderBy,
-        sandbox: queryArg.sandbox,
-        status: queryArg.status,
-        domain: queryArg.domain,
-        uuid: queryArg.uuid,
-        mobile: queryArg.mobile,
-        favorites: queryArg.favorites,
-        last_opened: queryArg.lastOpened,
-        name: queryArg.name,
-        category: queryArg.category,
-        desc_order: queryArg.descOrder,
+      GetSpacesSearchApiResponse,
+      GetSpacesSearchApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/spaces/search?sandbox=true`,
+        headers: { Authorization: queryArg.authorization },
+        params: {
+          permission: queryArg.permission,
+          page_num: queryArg.pageNum,
+          created_spaces: queryArg.createdSpaces,
+          order_by: queryArg.orderBy,
+          sandbox: queryArg.sandbox,
+          status: queryArg.status,
+          domain: queryArg.domain,
+          uuid: queryArg.uuid,
+          mobile: queryArg.mobile,
+          favorites: queryArg.favorites,
+          last_opened: queryArg.lastOpened,
+          name: queryArg.name,
+          category: queryArg.category,
+          desc_order: queryArg.descOrder,
+        },
+      }),
+      providesTags: (result, error, arg) => {
+        return result
+          ? [
+              ...(result.items ?? []).map(({ uuid }) => ({
+                type: "Space" as const,
+                id: uuid,
+              })),
+              "Space",
+            ]
+          : ["Space"];
       },
+      keepUnusedDataFor: 300,
     }),
-    providesTags:["SandboxSpaces"]
-  }),
-  getEducationSpaces: build.query<
-  GetSpacesSearchApiResponse,
-  GetSpacesSearchApiArg
->({
-  query: (queryArg) => ({
-    url: `/spaces/search?category=education`,
-    headers: { Authorization: queryArg.authorization },
-    params: {
-      permission: queryArg.permission,
-      page_num: queryArg.pageNum,
-      created_spaces: queryArg.createdSpaces,
-      order_by: queryArg.orderBy,
-      sandbox: queryArg.sandbox,
-      status: queryArg.status,
-      domain: queryArg.domain,
-      uuid: queryArg.uuid,
-      mobile: queryArg.mobile,
-      favorites: queryArg.favorites,
-      last_opened: queryArg.lastOpened,
-      name: queryArg.name,
-      category: queryArg.category,
-      desc_order: queryArg.descOrder,
-    },
-  }),
-  providesTags:["EducationSpaces"]
-}),
+    getEducationSpaces: build.query<
+      GetSpacesSearchApiResponse,
+      GetSpacesSearchApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/spaces/search?category=education`,
+        headers: { Authorization: queryArg.authorization },
+        params: {
+          permission: queryArg.permission,
+          page_num: queryArg.pageNum,
+          created_spaces: queryArg.createdSpaces,
+          order_by: queryArg.orderBy,
+          sandbox: queryArg.sandbox,
+          status: queryArg.status,
+          domain: queryArg.domain,
+          uuid: queryArg.uuid,
+          mobile: queryArg.mobile,
+          favorites: queryArg.favorites,
+          last_opened: queryArg.lastOpened,
+          name: queryArg.name,
+          category: queryArg.category,
+          desc_order: queryArg.descOrder,
+        },
+      }),
+      providesTags: (result, error, arg) => {
+        return result
+          ? [
+              ...(result.items ?? []).map(({ uuid }) => ({
+                type: "Space" as const,
+                id: uuid,
+              })),
+              "Space",
+            ]
+          : ["Space"];
+      },
+      keepUnusedDataFor: 300,
+    }),
+    getEventSpaces: build.query<
+      GetSpacesSearchApiResponse,
+      GetSpacesSearchApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/spaces/search?category=event`,
+        headers: { Authorization: queryArg.authorization },
+        params: {
+          permission: queryArg.permission,
+          page_num: queryArg.pageNum,
+          created_spaces: queryArg.createdSpaces,
+          order_by: queryArg.orderBy,
+          sandbox: queryArg.sandbox,
+          status: queryArg.status,
+          domain: queryArg.domain,
+          uuid: queryArg.uuid,
+          mobile: queryArg.mobile,
+          favorites: queryArg.favorites,
+          last_opened: queryArg.lastOpened,
+          name: queryArg.name,
+          category: queryArg.category,
+          desc_order: queryArg.descOrder,
+        },
+      }),
+      providesTags: (result, error, arg) => {
+        return result
+          ? [
+              ...(result.items ?? []).map(({ uuid }) => ({
+                type: "Space" as const,
+                id: uuid,
+              })),
+              "Space",
+            ]
+          : ["Space"];
+      },
+      keepUnusedDataFor: 300,
+    }),
     postStainedInstaller: build.mutation<
       PostStainedInstallerApiResponse,
       PostStainedInstallerApiArg
@@ -1096,7 +1159,7 @@ const mwQueries = api.injectEndpoints({
   }),
   overrideExisting: false,
 });
-export { mwQueries};
+export { mwQueries };
 export type PostAdminOtfAssetApiResponse = /** status 200  */ OtfAsset;
 export type PostAdminOtfAssetApiArg = {
   /** Authorization HTTP header with JWT access token. */
@@ -1605,9 +1668,9 @@ export type GetSpaceBySpaceUuidApiArg = {
   /** Authorization HTTP header with JWT access token. */
   authorization?: string;
 };
-export type PatchSpaceBySpaceUuidApiResponse = /** status 200  */
-  | Space
-  | /** status 207  */ Space;
+export type PatchSpaceBySpaceUuidApiResponse =
+  /** status 200  */
+  Space | /** status 207  */ Space;
 export type PatchSpaceBySpaceUuidApiArg = {
   spaceUuid: string;
   /** Authorization HTTP header with JWT access token. */
@@ -2417,7 +2480,6 @@ export const {
   useGetAuthProfileQuery,
   usePatchAuthProfileMutation,
   useGetAuthPublicKeyQuery,
-  useGetAuthRefreshQuery,
   usePostAuthRegistrationMutation,
   usePostAuthRegistrationConfirmByTokenMutation,
   usePostAuthResendConfirmationEmailMutation,
@@ -2490,5 +2552,6 @@ export const {
   useGetUserPurchaseQuery,
   usePostWebhookMutation,
   useGetSandboxSpacesQuery,
-  useGetEducationSpacesQuery
+  useGetEducationSpacesQuery,
+  useGetEventSpacesQuery,
 } = mwQueries;

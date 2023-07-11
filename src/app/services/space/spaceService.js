@@ -1,18 +1,17 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const baseUrl =
-"https://devapi.maxwhere.com"
+const baseUrl = "https://devapi.maxwhere.com";
 
 export const spaceApi = createApi({
-  reducerPath: 'spaceApi',
+  reducerPath: "spaceApi",
   tagTypes: ["SandboxSpaces"],
   baseQuery: fetchBaseQuery({
     baseUrl,
     prepareHeaders: (headers, { getState }) => {
-      const token = getState().auth.userToken
+      const token = getState().auth.access_token;
       if (token) {
-        headers.set('authorization', `Bearer ${token}`)
-        return headers
+        headers.set("authorization", `Bearer ${token}`);
+        return headers;
       }
     },
   }),
@@ -20,28 +19,31 @@ export const spaceApi = createApi({
     getSandboxSpaces: build.query({
       query: () => ({
         url: `/spaces/search?sandbox=true`,
-        method: 'GET',
+        method: "GET",
+      }),
+      transformResponse: (response, meta, arg) => response.items,
     }),
-    transformResponse: (response, meta, arg) =>  response.items
-  }),
-  getSpaces: build.query({
-    query: () => ({
-      url: `/spaces/search`,
-      method: 'GET',
-  }),
-  transformResponse: (response, meta, arg) =>  response.items,
-  }),
-  getEducationSpaces: build.query({
-    query: ()=>({
-      url:`/spaces/search?category=education`,
-      method: 'GET',
+    getSpaces: build.query({
+      query: () => ({
+        url: `/spaces/search`,
+        method: "GET",
+      }),
+      transformResponse: (response, meta, arg) => response.items,
     }),
-    transformResponse: (response, meta, arg) =>  response.items
-  
-}),
+    getEducationSpaces: build.query({
+      query: () => ({
+        url: `/spaces/search?category=education`,
+        method: "GET",
+      }),
+      transformResponse: (response, meta, arg) => response.items,
+    }),
     invalidatesTags: [{ type: "SandboxSpaces", id: "LIST" }],
   }),
-})
+});
 
 // export react hook
-export const { useGetSandboxSpacesQuery, useGetSpacesQuery, useGetEducationSpacesQuery } = spaceApi
+export const {
+  useGetSandboxSpacesQuery,
+  useGetSpacesQuery,
+  useGetEducationSpacesQuery,
+} = spaceApi;
