@@ -1,4 +1,4 @@
-import { mwApi2 as api } from "../mwApi2";
+import { mwApi as api } from "../mwApi";
 const injectedRtkApi = api.injectEndpoints({
   endpoints: (build) => ({
     postSpace: build.mutation<PostSpaceApiResponse, PostSpaceApiArg>({
@@ -191,10 +191,121 @@ const injectedRtkApi = api.injectEndpoints({
         },
       }),
     }),
+    getSandboxSpaces: build.query<
+      GetSpacesSearchApiResponse,
+      GetSpacesSearchApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/spaces/search?sandbox=true`,
+        headers: { Authorization: queryArg.authorization },
+        params: {
+          permission: queryArg.permission,
+          page_num: queryArg.pageNum,
+          created_spaces: queryArg.createdSpaces,
+          order_by: queryArg.orderBy,
+          sandbox: queryArg.sandbox,
+          status: queryArg.status,
+          domain: queryArg.domain,
+          uuid: queryArg.uuid,
+          mobile: queryArg.mobile,
+          favorites: queryArg.favorites,
+          last_opened: queryArg.lastOpened,
+          name: queryArg.name,
+          category: queryArg.category,
+          desc_order: queryArg.descOrder,
+        },
+      }),
+      providesTags: (result, error, arg) => {
+        return result
+          ? [
+              ...(result.items ?? []).map(({ uuid }) => ({
+                type: "Space" as const,
+                id: uuid,
+              })),
+              "Space",
+            ]
+          : ["Space"];
+      },
+      keepUnusedDataFor: 300,
+    }),
+    getEducationSpaces: build.query<
+      GetSpacesSearchApiResponse,
+      GetSpacesSearchApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/spaces/search?category=education`,
+        headers: { Authorization: queryArg.authorization },
+        params: {
+          permission: queryArg.permission,
+          page_num: queryArg.pageNum,
+          created_spaces: queryArg.createdSpaces,
+          order_by: queryArg.orderBy,
+          sandbox: queryArg.sandbox,
+          status: queryArg.status,
+          domain: queryArg.domain,
+          uuid: queryArg.uuid,
+          mobile: queryArg.mobile,
+          favorites: queryArg.favorites,
+          last_opened: queryArg.lastOpened,
+          name: queryArg.name,
+          category: queryArg.category,
+          desc_order: queryArg.descOrder,
+        },
+      }),
+      providesTags: (result, error, arg) => {
+        return result
+          ? [
+              ...(result.items ?? []).map(({ uuid }) => ({
+                type: "Space" as const,
+                id: uuid,
+              })),
+              "Space",
+            ]
+          : ["Space"];
+      },
+      keepUnusedDataFor: 300,
+    }),
+    getEventSpaces: build.query<
+      GetSpacesSearchApiResponse,
+      GetSpacesSearchApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/spaces/search?category=event`,
+        headers: { Authorization: queryArg.authorization },
+        params: {
+          permission: queryArg.permission,
+          page_num: queryArg.pageNum,
+          created_spaces: queryArg.createdSpaces,
+          order_by: queryArg.orderBy,
+          sandbox: queryArg.sandbox,
+          status: queryArg.status,
+          domain: queryArg.domain,
+          uuid: queryArg.uuid,
+          mobile: queryArg.mobile,
+          favorites: queryArg.favorites,
+          last_opened: queryArg.lastOpened,
+          name: queryArg.name,
+          category: queryArg.category,
+          desc_order: queryArg.descOrder,
+        },
+      }),
+      providesTags: (result, error, arg) => {
+        return result
+          ? [
+              ...(result.items ?? []).map(({ uuid }) => ({
+                type: "Space" as const,
+                id: uuid,
+              })),
+              "Space",
+            ]
+          : ["Space"];
+      },
+      keepUnusedDataFor: 300,
+    }),
   }),
   overrideExisting: false,
 });
-export { injectedRtkApi as mwApi };
+export { injectedRtkApi as spaceQueries };
 
 export type PostSpaceApiResponse = /** status 200  */ Space;
 export type PostSpaceApiArg = {

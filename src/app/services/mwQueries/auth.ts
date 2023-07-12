@@ -1,4 +1,4 @@
-import { mwApi2 as api } from "../mwApi2";
+import { mwApi as api } from "../mwApi";
 const injectedRtkApi = api.injectEndpoints({
   endpoints: (build) => ({
     postAuthLogin: build.mutation<
@@ -154,7 +154,7 @@ const injectedRtkApi = api.injectEndpoints({
   }),
   overrideExisting: false,
 });
-export { injectedRtkApi as mwApi };
+export { injectedRtkApi as authQueries };
 export type PostAuthLoginApiResponse = /** status 200  */ LoginReponse;
 export type PostAuthLoginApiArg = {
   login: Login;

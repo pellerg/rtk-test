@@ -22,7 +22,7 @@ export const userLogin = createAsyncThunk(
 
       // store user's token in local storage
       localStorage.setItem("access_token", data.access_token);
-      console.log("Login - access token: " + data.access_token);
+      console.log("Login successful");
 
       return data;
     } catch (error) {
@@ -48,12 +48,8 @@ export const refreshJWTToken = createAsyncThunk(
       };
 
       const { data } = await axios.get(`${backendURL}/auth/refresh`, config);
-
-      console.log("refresh token data: ");
-      console.log(data);
       // store user's token in local storage
       localStorage.setItem("access_token", data.access_token);
-      console.log("Login - access token: " + data.access_token);
 
       return data;
     } catch (error) {

@@ -1,4 +1,4 @@
-import { mwApi as api } from "../mwApi";
+import { mwApi_all as api } from "../mwApi_all";
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 

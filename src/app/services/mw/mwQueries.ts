@@ -1,4 +1,4 @@
-import { mwApi as api } from "../mwApi";
+import { mwApi_all as api } from "../mwApi_all";
 
 const mwQueries = api.injectEndpoints({
   endpoints: (build) => ({

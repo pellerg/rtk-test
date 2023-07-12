@@ -3,33 +3,42 @@ import { useDispatch, useSelector } from "react-redux";
 import { spaceApi } from "../app/services/space/spaceService";
 import { mwQueries } from "../app/services/mw/mwQueries";
 
+import { authQueries } from "../app/services/mwQueries/auth";
+import { spaceQueries } from "../app/services/mwQueries/space";
+
 const HomeScreen = () => {
   const [skip, setSkip] = React.useState(true);
   const { isLoggedIn } = useSelector((state) => state.auth);
 
   const {
+    data: user,
+    isLoading: isUserLoading,
+    isSuccess: isUserSuccess,
+  } = authQueries.useGetAuthProfileQuery({}, { skip });
+
+  const {
     data: demoSpaces,
     isLoading: isDemoSpacesLoading,
     isSuccess: isDemoSpacesSuccess,
-  } = mwQueries.useGetSandboxSpacesQuery({}, { skip });
+  } = spaceQueries.useGetSandboxSpacesQuery({}, { skip });
 
   const {
     data: educationSpaces,
     isLoading: isEducationSpacesLoading,
     isSuccess: isEducationSpacesSuccess,
-  } = mwQueries.useGetEducationSpacesQuery({}, { skip });
+  } = spaceQueries.useGetEducationSpacesQuery({}, { skip });
 
   const {
     data: eventSpaces,
     isLoading: isEventSpacesLoading,
     isSuccess: isEventSpacesSuccess,
-  } = mwQueries.useGetEventSpacesQuery({}, { skip });
+  } = spaceQueries.useGetEventSpacesQuery({}, { skip });
 
   const [setToFavorite, { result, isLoading: isPostSpaceFavoriteLoading }] =
-    mwQueries.usePostSpaceBySpaceUuidFavoriteMutation();
+    spaceQueries.usePostSpaceBySpaceUuidFavoriteMutation();
 
   const [removeFavorite, { isLoading: isDeleteSpaceFavoriteLoading }] =
-    mwQueries.useDeleteSpaceBySpaceUuidFavoriteMutation();
+    spaceQueries.useDeleteSpaceBySpaceUuidFavoriteMutation();
 
   const buttonClick = (space) => {
     if (space.is_favorite) {
@@ -48,6 +57,18 @@ const HomeScreen = () => {
   return (
     <div className="home-screen">
       <h1>{isLoggedIn ? "Spaces:" : "Log in to Browse Spaces!"}</h1>
+      {isUserSuccess && (
+        <div className="sandboxSpaces">
+          <div>
+            <span>
+              <strong>New user details:</strong>
+            </span>
+          </div>
+          <span>
+            {user.first_name} {user.last_name}{" "}
+          </span>
+        </div>
+      )}
       {isLoggedIn && (
         <div className="sandboxSpaces">
           <div>

@@ -1,11 +1,12 @@
-import { useSelector } from 'react-redux'
-import React , { useEffect, useState, } from 'react'
-import '../styles/profile.css'
+import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import "../styles/profile.css";
 
-import { mwQueries } from '../app/services/mw/mwQueries'
+import { mwQueries } from "../app/services/mw/mwQueries";
+import { spaceQueries } from "../app/services/mwQueries/space";
 
 const ProfileScreen = () => {
-  const { userInfo } = useSelector((state) => state.auth)
+  const { userInfo } = useSelector((state) => state.auth);
 
   const [skip, setSkip] = useState(true);
   const { isLoggedIn } = useSelector((state) => state.auth);
@@ -14,12 +15,12 @@ const ProfileScreen = () => {
     data: demoSpaces,
     isLoading: isDemoSpacesLoading,
     isSuccess: isDemoSpacesSuccess,
-  } = mwQueries.useGetSandboxSpacesQuery({}, { skip });
-    const [setToFavorite, { result, isLoading: isPostSpaceFavoriteLoading}] =
-    mwQueries.usePostSpaceBySpaceUuidFavoriteMutation();
+  } = spaceQueries.useGetSandboxSpacesQuery({}, { skip });
+  const [setToFavorite, { result, isLoading: isPostSpaceFavoriteLoading }] =
+    spaceQueries.usePostSpaceBySpaceUuidFavoriteMutation();
 
-  const [removeFavorite, {isLoading:isDeleteSpaceFavoriteLoading}] =
-    mwQueries.useDeleteSpaceBySpaceUuidFavoriteMutation();
+  const [removeFavorite, { isLoading: isDeleteSpaceFavoriteLoading }] =
+    spaceQueries.useDeleteSpaceBySpaceUuidFavoriteMutation();
 
   const buttonClick = (space) => {
     if (space.is_favorite) {
@@ -35,16 +36,15 @@ const ProfileScreen = () => {
     setSkip(!isLoggedIn);
   }, [isLoggedIn]);
 
-  useEffect(()=>{
-    console.log("userinfo:")
-    console.log(userInfo)
-  }, [userInfo])
+  useEffect(() => {
+    console.log("userinfo:");
+    console.log(userInfo);
+  }, [userInfo]);
 
-  useEffect(()=>{
-    console.log("sandboxSpaces:")
-    console.log(demoSpaces)
-  }, [demoSpaces])
-
+  useEffect(() => {
+    console.log("sandboxSpaces:");
+    console.log(demoSpaces);
+  }, [demoSpaces]);
 
   return (
     <div>
@@ -54,7 +54,10 @@ const ProfileScreen = () => {
         because you're logged in
       </span>
       <div className="userInfo">
-        <span> <strong>UUID:</strong> {userInfo?.uuid}</span> 
+        <span>
+          {" "}
+          <strong>UUID:</strong> {userInfo?.uuid}
+        </span>
         <span></span>
       </div>
       {isLoggedIn && (
@@ -64,13 +67,17 @@ const ProfileScreen = () => {
               <strong>Search spaces:</strong>
             </span>
           </div>
-          {isDemoSpacesSuccess && demoSpaces &&
+          {isDemoSpacesSuccess &&
+            demoSpaces &&
             demoSpaces?.items.map((space) => (
               <React.Fragment key={space.uuid}>
                 {space && (
                   <React.Fragment>
                     <span>{space.name}</span>
-                    <button className={`favorite-button ${space.is_favorite ? "favorite":""} ${isPostSpaceFavoriteLoading?"":""}`}
+                    <button
+                      className={`favorite-button ${
+                        space.is_favorite ? "favorite" : ""
+                      } ${isPostSpaceFavoriteLoading ? "" : ""}`}
                       onClick={() => {
                         buttonClick(space);
                       }}
@@ -85,7 +92,7 @@ const ProfileScreen = () => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default ProfileScreen
+export default ProfileScreen;

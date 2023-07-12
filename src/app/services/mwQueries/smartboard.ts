@@ -1,4 +1,4 @@
-import { mwApi2 as api } from "../mwApi2";
+import { mwApi as api } from "../mwApi";
 const injectedRtkApi = api.injectEndpoints({
   endpoints: (build) => ({
     postSmartboard: build.mutation<
